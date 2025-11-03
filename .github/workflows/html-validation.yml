@@ -13,15 +13,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # Validate all .html files in the repo root (and subfolders if you add any)
+      # Use a stable major tag so you don't chase patch numbers
       - name: Run HTML5 Validator
-        uses: Cyb3r-Jak3/html5validator-action@v0.5.1
+        uses: Cyb3r-Jak3/html5validator-action@v0
         with:
           root: .
-          # You can ignore vendor or external folders if you add them later, e.g.:
+          # Example ignores if you add vendor folders later:
           # blacklist: "assets/vendor"
 
-      # Optional: fail if any external links are broken (kept simple)
       - name: Check links
         uses: lycheeverse/lychee-action@v1
         with:
