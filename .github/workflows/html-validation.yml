@@ -1,27 +1,35 @@
-name: HTML Validation
+name: Site Quality Checks
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  validate:
-    name: HTML5 Validator
+  html-lint:
+    name: HTML Lint
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # Use a stable major tag so you don't chase patch numbers
-      - name: Run HTML5 Validator
-        uses: Cyb3r-Jak3/html5validator-action@v0
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          root: .
-          # Example ignores if you add vendor folders later:
-          # blacklist: "assets/vendor"
+          node-version: 20
 
-      - name: Check links
+      # Lint all HTML files (recursively). Adjust glob if you add other folders.
+      - name: Run html-validate
+        run: |
+          npx --yes html-validate "**/*.html"
+
+  link-check:
+    name: Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Check links with lychee
         uses: lycheeverse/lychee-action@v1
         with:
           args: >
