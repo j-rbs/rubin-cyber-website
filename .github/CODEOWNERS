@@ -1,0 +1,3 @@
+# Rubin Cyber - CODEOWNERS
+# This ensures all pull requests require the owner's review before merging.
+* @j-rbs
