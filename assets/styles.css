@@ -11,12 +11,12 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #1c1e22; /* deep, elegant dark grey */
+  background-color: #1c1e22; /* deep professional grey */
   color: #e4e7ec;
   line-height: 1.6;
 }
 
-/* ---------- Layout ---------- */
+/* ---------- Containers ---------- */
 .container {
   width: 90%;
   max-width: 1100px;
@@ -46,7 +46,7 @@ body {
   gap: 0.5rem;
   font-weight: 600;
   font-size: 1.2rem;
-  color: #9bb0c8;
+  color: #a8c4ff; /* refined blue accent */
 }
 
 .nav .menu a {
@@ -58,11 +58,11 @@ body {
 
 .nav .menu a:hover,
 .nav .menu a[aria-current="page"] {
-  color: #9bb0c8;
+  color: #a8c4ff;
 }
 
 .nav .cta {
-  background: #9bb0c8;
+  background: #a8c4ff;
   color: #1c1e22;
   padding: 0.45rem 1rem;
   border-radius: 6px;
@@ -71,7 +71,7 @@ body {
 }
 
 .nav .cta:hover {
-  background: #a8bed4;
+  background: #c1d6ff;
 }
 
 /* ---------- Hero ---------- */
@@ -121,7 +121,7 @@ body {
 }
 
 .card h2 {
-  color: #9bb0c8;
+  color: #a8c4ff;
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
@@ -132,10 +132,10 @@ body {
   color: #d6d9df;
 }
 
-/* ---------- Badges ---------- */
+/* ---------- Badges & Buttons ---------- */
 .badge {
   display: inline-block;
-  background: #9bb0c8;
+  background: #a8c4ff;
   color: #1c1e22;
   padding: 0.3rem 0.8rem;
   border-radius: 6px;
@@ -155,7 +155,7 @@ body {
 }
 
 .foot a {
-  color: #9bb0c8;
+  color: #a8c4ff;
   text-decoration: none;
 }
 
@@ -163,7 +163,6 @@ body {
   text-decoration: underline;
 }
 
-/* ---------- Utility ---------- */
 .text-right {
   text-align: right;
 }
