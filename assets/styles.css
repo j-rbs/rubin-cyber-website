@@ -150,3 +150,21 @@ img{display:block;max-width:100%}
   }
 }
 
+.about {
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.about-photo img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
