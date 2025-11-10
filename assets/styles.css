@@ -189,22 +189,64 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .btn:active, button:active{background:var(--blue);transform:none}
 
 /* FOOTER */
-.foot{
-  background:var(--grey-850);
-  border-top:1px solid var(--field-border);
-  color:#9CA1AA;
+.foot {
+  background: var(--grey-850);
+  border-top: 1px solid var(--field-border);
+  color: #9CA1AA;
+  font-size: 0.95rem;
   padding-block: var(--space-7);
-  font-size:.95rem
+  text-align: center;
 }
-.foot a{color:var(--blue)}
-.foot a:hover{color:var(--blue-hover);text-decoration:underline}
+
+/* Center and space footer content */
+.foot .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+/* Text and link styling */
+.foot a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.foot a:hover {
+  color: var(--blue-hover);
+  text-decoration: underline;
+}
 
 .foot p {
-  margin: 0.4rem 0;
+  margin: 0.3rem 0;
 }
+
+/* Compact CTA button inside footer */
 .foot .btn {
-  padding: 0.6rem 1.1rem;
+  padding: 0.55rem 1rem;
   font-size: 0.95rem;
+  background: transparent;
+  border: 1px solid var(--field-border);
+  color: var(--blue);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.08s ease;
+}
+
+.foot .btn:hover {
+  background: rgba(76,139,245,0.12);
+  border-color: rgba(76,139,245,0.35);
+  color: var(--blue-hover);
+  transform: translateY(-1px);
+}
+
+/* Responsive tweak */
+@media (max-width:700px){
+  .foot .container {
+    gap: 0.5rem;
+  }
 }
 
 /* ACCESSIBILITY */
