@@ -173,6 +173,11 @@ img{display:block;max-width:100%}
 .section.about ul.indented-list.clear-right {
   clear: right;
 }
+.section.about ul.indented-list ul {
+  margin-top: 0.3rem;
+  margin-left: 1.2rem;
+  list-style-type: circle;
+}
 
 
 
