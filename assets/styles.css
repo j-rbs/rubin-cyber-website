@@ -198,7 +198,7 @@ html::before {
   /* Dark veil + skyline image (use RELATIVE path for project pages) */
   background-image:
     linear-gradient(rgba(28,30,34,0.90), rgba(28,30,34,0.90)),
-    url("assets/melbourne-skyline.webp");
+    url("./assets/melbourne-skyline.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -218,6 +218,43 @@ html::before {
 }
 
 /* Cards can stay solid for readability (you already have .card backgrounds) */
+
+/* ===== Site-wide Melbourne skyline background (works on all pages) ===== */
+
+/* 1) Make body the stacking context and keep a solid fallback color */
+body {
+  position: relative;            /* create stacking context */
+  background-color: var(--bg);   /* fallback if image fails */
+}
+
+/* 2) Fixed overlay sits behind all content but above the fallback color */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;                    /* no negative z-index */
+  pointer-events: none;
+
+  /* Use RELATIVE path on GitHub Project Pages (no leading slash) */
+  background-image:
+    linear-gradient(rgba(28,30,34,0.90), rgba(28,30,34,0.90)),
+    url("./assets/melbourne-skyline.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+}
+
+/* 3) Ensure your actual content sits above the overlay */
+.nav, .section, .foot {
+  position: relative;
+  z-index: 1;
+}
+
+/* 4) Let the hero show the global overlay through */
+.hero {
+  background: transparent !important;
+}
 
 
 
