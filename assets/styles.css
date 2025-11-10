@@ -187,7 +187,7 @@ body {
   /* dark veil + skyline */
   background-image:
     linear-gradient(rgba(28,30,34,0.90), rgba(28,30,34,0.90)),
-    url('/assets/melbourne-skyline.webp');
+    url('./assets/melbourne-skyline.webp');
 
   background-size: cover;        /* fill viewport */
   background-position: center;   /* center focal point */
