@@ -163,7 +163,7 @@ img{display:block;max-width:100%}
 body{
   background:
     linear-gradient(rgba(28,30,34,0.90), rgba(28,30,34,0.90)),
-    url("./assets/melbourne-skyline.webp")
+    url("./melbourne-skyline.webp")
     center / cover no-repeat fixed !important;
 }
 
