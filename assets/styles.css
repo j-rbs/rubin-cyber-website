@@ -265,7 +265,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 }
 
 /* Headings: slightly more separation from following text */
-h2 + p, h3 + p { margin-top: .35rem }
+h2 + p, h3 + p { margin-top: .25rem }
 
 /* ===========================
    iOS/mobile background reliability
