@@ -138,7 +138,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 }
 .card:hover{transform:translateY(-3px); box-shadow:var(--shadow-2); background: rgba(38,41,47,0.78)}
 .card h2,.card h3{color:var(--text)}
-.card h2{color:var(--blue); margin-bottom:.75rem}
+.card h2{color:var(--blue); margin-bottom:.35rem}
 .kicker{color:#AEB4BF;font-size:.95rem;margin-bottom:.35rem}
 .list{list-style:disc;margin-left:1.2rem;color:#D6D9DF}
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace;color:#C9CED6}
@@ -236,7 +236,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   list-style: disc outside;     /* native bullets */
   padding-left: 1.2rem;         /* standard bullet gutter */
   margin-top:.15rem;
-  margin-bottom:.75rem;
+  margin-bottom:.35rem;
   margin-left: 2.2rem;          /* EXTRA offset so they sit further right than prose */
   max-width: var(--measure);
 }
