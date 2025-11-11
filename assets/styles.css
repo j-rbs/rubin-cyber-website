@@ -302,3 +302,47 @@ h2 + p, h3 + p { margin-top: .15rem }
     }
   }
 }
+/* ===========================
+   GLOBAL HERO ⇄ SECTION SPACING FIX
+   (applies on all pages)
+   =========================== */
+
+/* 1) Slightly reduce default section padding */
+.section{
+  padding-block: clamp(2rem, 6vw, 4rem);
+}
+
+/* 2) Tighten the gap specifically when a section follows a hero */
+.hero{
+  /* keep top generous, trim bottom */
+  padding-block: clamp(var(--space-8), 9vw, var(--space-10)) clamp(1rem, 3.5vw, 1.75rem);
+}
+
+/* When a .section comes right after .hero, reduce the section's top padding */
+.hero + .section{
+  padding-top: clamp(0.75rem, 2.5vw, 1.5rem);
+}
+
+/* 3) Also tighten between any two consecutive sections (site-wide) */
+.section + .section{
+  padding-top: clamp(1rem, 3vw, 2rem);
+}
+
+/* 4) Mobile tuning so it doesn’t feel cramped on small screens */
+@media (max-width: 700px){
+  .section{
+    padding-block: clamp(1.5rem, 6vw, 3rem);
+  }
+  .hero{
+    padding-bottom: clamp(0.75rem, 3vw, 1.25rem);
+  }
+  .hero + .section{
+    padding-top: clamp(0.5rem, 2.5vw, 1rem);
+  }
+}
+
+/* Optional: ensure first child in any section doesn’t add extra top margin */
+.section .container > *:first-child{
+  margin-top: 0;
+}
+
