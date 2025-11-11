@@ -346,3 +346,21 @@ h2 + p, h3 + p { margin-top: .15rem }
   margin-top: 0;
 }
 
+/* === FIX: Prevent CTA button cut-off on mobile nav === */
+@media (max-width: 700px) {
+  .nav {
+    padding-block: 0.9rem 0.9rem; /* slightly taller nav on mobile */
+  }
+
+  .menu .cta {
+    padding: 0.55rem 0.95rem;     /* slightly smaller button */
+    font-size: 0.95rem;           /* scales text down a bit */
+  }
+
+  /* Ensures the button never clips the nav edges */
+  .nav-inner {
+    align-items: center;
+    min-height: 60px;             /* ensures enough room for CTA */
+  }
+}
+
