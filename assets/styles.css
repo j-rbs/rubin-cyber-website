@@ -363,4 +363,19 @@ h2 + p, h3 + p { margin-top: .15rem }
     min-height: 60px;             /* ensures enough room for CTA */
   }
 }
+/* === FIX: Button text size for forms (Send message) === */
+.btn,
+button[type="submit"] {
+  font-size: 1rem;        /* increase from default ~0.9rem */
+  padding: 0.95rem 1.25rem; /* slightly roomier touch target */
+  letter-spacing: 0.01em; /* tiny tracking for clarity */
+}
+
+@media (max-width: 700px) {
+  .btn,
+  button[type="submit"] {
+    font-size: 1.02rem;    /* slightly larger on mobile for readability */
+    padding: 1rem 1.3rem;
+  }
+}
 
