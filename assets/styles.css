@@ -522,3 +522,23 @@ p .btn, .card .btn {
     }
   }
 }
+/* === ABOUT PAGE: adjust bullet indentation === */
+
+/* Increase indentation for the top-level bullet list */
+.section.about ul.indented-list {
+  padding-left: 2.25rem !important; /* deeper indent (was ~1.6rem) */
+  margin-left: 0 !important;
+  list-style: disc outside !important;
+}
+
+/* Slightly increase indentation for nested bullets too */
+.section.about ul.indented-list ul {
+  margin-left: 2.75rem !important;  /* adds more visual offset */
+  list-style-type: circle;
+}
+
+/* Optional: add a bit more vertical rhythm for breathing room */
+.section.about ul.indented-list li {
+  margin: 0.45rem 0;
+  line-height: var(--lh-relaxed);
+}
