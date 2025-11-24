@@ -1,10 +1,18 @@
 :root{
-  --blue:#4C8BF5;
+  /* === Palette: Charcoal + Sand + Gold (primary) + Blue (secondary) === */
+  --charcoal:#1D1F21;
+  --sand:#F4F2EE;
+  --gold:#C9A86A;
+  --gold-soft:#E2D4B5;
+  --slate:#3A3D40;
+
+  --blue:#4C8BF5;        /* secondary accent, mainly for CTAs */
   --blue-hover:#6EA2FA;
   --blue-dark:#18386F;
+
   --text:#EAEAEA;
-  --bg:#1C1E22;
-  --grey-900:#1C1E22;
+  --bg:#1D1F21;
+  --grey-900:#1D1F21;
   --grey-850:#23262b;
   --field-bg:#1f2329;
   --field-border:#333843;
@@ -39,7 +47,7 @@ body{
   line-height:var(--lh-normal);
   -webkit-font-smoothing:antialiased;
   background:
-    linear-gradient(rgba(28,30,34,0.90), rgba(28,30,34,0.90)),
+    linear-gradient(rgba(29,31,33,0.90), rgba(29,31,33,0.90)),
     url("./melbourne-skyline.webp")
     center / cover no-repeat fixed;
   font-size:16px;
@@ -67,7 +75,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .brand{display:inline-flex;align-items:center;gap:.6rem;white-space:nowrap}
 .brand .logo{width:35px;height:35px;border-radius:6px}
 .brand span{
-  color:var(--blue)!important;
+  color:var(--gold)!important;
   font-family:var(--font-logo);
   font-weight:700;font-style:italic;letter-spacing:-0.015em;
   font-size:1.4rem!important; line-height:1;
@@ -76,20 +84,47 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 /* Menu links */
 .menu{display:flex;align-items:center;gap:1.75rem;white-space:nowrap}
 .menu a{font-weight:500;text-decoration:none;transition:color .2s ease,border-color .15s ease}
-.menu a.navlink{color:#CFD3DA;border-bottom:2px solid transparent;padding-bottom:6px}
-.menu a.navlink:hover,.menu a.navlink:focus{color:var(--blue);border-bottom-color:var(--blue)}
-.menu a.navlink[aria-current="page"]{color:var(--blue);border-bottom-color:var(--blue)}
+.menu a.navlink{
+  color:#CFD3DA;
+  border-bottom:2px solid transparent;
+  padding-bottom:6px;
+}
+.menu a.navlink:hover,
+.menu a.navlink:focus{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
+.menu a.navlink[aria-current="page"]{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
 
-/* CTA button */
+/* CTA button (keeps blue as strong secondary accent) */
 .menu .cta{
   background:var(--blue); color:#fff!important;
   padding:.6rem 1.05rem; border-radius:var(--radius-md);
   font-weight:700; letter-spacing:.02em;
-  transition:background .2s ease,transform .08s ease,color .1s ease, box-shadow .2s ease;
+  border:1px solid rgba(201,168,106,0.35);  /* subtle gold ring */
+  box-shadow:0 4px 12px rgba(0,0,0,0.35);
+  transition:background .2s ease,transform .08s ease,color .1s ease, box-shadow .2s ease,border-color .2s ease;
 }
-.menu .cta:hover{background:var(--blue-hover);color:var(--blue-dark)!important;transform:translateY(-1px); box-shadow:0 6px 16px rgba(76,139,245,.25)}
-.menu .cta:active{color:var(--blue-dark)!important;transform:none; box-shadow:none}
-.menu .cta:focus,.menu .cta:visited{background:var(--blue);color:#fff!important}
+.menu .cta:hover{
+  background:var(--blue-hover);
+  color:#fff!important;
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  border-color:rgba(201,168,106,0.55);
+}
+.menu .cta:active{
+  color:#fff!important;
+  transform:none;
+  box-shadow:none
+}
+.menu .cta:focus,
+.menu .cta:visited{
+  background:var(--blue);
+  color:#fff!important;
+}
 
 /* HERO */
 .hero{
@@ -98,7 +133,9 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   text-align:center;
 }
 .badge{
-  display:inline-block;background:var(--blue);color:#0B0D13;
+  display:inline-block;
+  background:var(--gold);
+  color:#1D1F21;
   padding:.42rem .9rem;border-radius:var(--radius-md);
   font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase
 }
@@ -111,10 +148,10 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .hero--fade::after{
   content:""; position:absolute; inset:auto 0 -1px 0; height:140px; pointer-events:none;
   background:linear-gradient(to bottom,
-    rgba(28,30,34,0.92) 0%,
-    rgba(28,30,34,0.75) 40%,
-    rgba(28,30,34,0.40) 75%,
-    rgba(28,30,34,0.00) 100%);
+    rgba(29,31,33,0.92) 0%,
+    rgba(29,31,33,0.75) 40%,
+    rgba(29,31,33,0.40) 75%,
+    rgba(29,31,33,0.00) 100%);
   z-index:0;
 }
 .hero--fade > *{position:relative;z-index:1}
@@ -128,17 +165,25 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 
 /* CARDS */
 .card{
-  background: rgba(38,41,47,0.65);
+  background: rgba(35,38,43,0.75);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  border:1px solid rgba(255,255,255,0.06);
+  border:1px solid rgba(201,168,106,0.18); /* subtle gold edge */
   border-radius:var(--radius-lg);
   padding: clamp(1.4rem, 2.4vw, 2rem);
   box-shadow:var(--shadow-1);
-  transition:transform .2s,box-shadow .2s, background .2s;
+  transition:transform .2s,box-shadow .2s, background .2s,border-color .2s;
 }
-.card:hover{transform:translateY(-3px); box-shadow:var(--shadow-2); background: rgba(38,41,47,0.78)}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-2);
+  background: rgba(35,38,43,0.88);
+  border-color:rgba(201,168,106,0.35);
+}
 .card h2,.card h3{color:var(--text)}
-.card h2{color:var(--blue); margin-bottom:.35rem}
+.card h2{
+  color:var(--gold);
+  margin-bottom:.35rem;
+}
 .kicker{color:#AEB4BF;font-size:.95rem;margin-bottom:.35rem}
 .list{list-style:disc;margin-left:1.2rem;color:#D6D9DF}
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace;color:#C9CED6}
@@ -159,18 +204,26 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .input::placeholder, input::placeholder, textarea::placeholder{color:rgba(154,162,175,0.9)}
 .input:focus, input:focus, textarea:focus{
   background-color: rgba(31,35,41,0.72);
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(76,139,245,.15);
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,168,106,.32);
   outline:0
 }
 .btn, button{
   background:var(--blue); color:#fff; border:0;
   border-radius:var(--radius-md);
   padding:.9rem 1.15rem; font-weight:700; cursor:pointer;
-  transition:background .2s,transform .08s,box-shadow .2s
+  transition:background .2s,transform .08s,box-shadow .2s,border-color .2s;
+  border:1px solid rgba(0,0,0,0.4);
 }
-.btn:hover, button:hover{background:var(--blue-hover);box-shadow:0 6px 16px rgba(76,139,245,.25);transform:translateY(-1px)}
-.btn:active, button:active{background:var(--blue);transform:none}
+.btn:hover, button:hover{
+  background:var(--blue-hover);
+  box-shadow:0 6px 16px rgba(0,0,0,.45);
+  transform:translateY(-1px)
+}
+.btn:active, button:active{
+  background:var(--blue);
+  transform:none
+}
 
 /* FOOTER */
 .foot{
@@ -184,19 +237,39 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .foot .container{
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;
 }
-.foot a{color:var(--blue);text-decoration:none;font-weight:500}
-.foot a:hover{color:var(--blue-hover);text-decoration:underline}
+.foot a{
+  color:var(--gold);
+  text-decoration:none;
+  font-weight:500
+}
+.foot a:hover{
+  color:var(--gold-soft);
+  text-decoration:underline
+}
 .foot p{margin:.3rem 0}
 .foot .btn{
-  padding:.55rem 1rem;font-size:.95rem;background:transparent;border:1px solid var(--field-border);
-  color:var(--blue);font-weight:600;border-radius:var(--radius-md);
+  padding:.55rem 1rem;font-size:.95rem;
+  background:transparent;
+  border:1px solid var(--field-border);
+  color:var(--gold);
+  font-weight:600;
+  border-radius:var(--radius-md);
   transition:background .15s ease,border-color .15s ease,color .15s ease,transform .08s ease;
 }
-.foot .btn:hover{background:rgba(76,139,245,0.12);border-color:rgba(76,139,245,0.35);color:var(--blue-hover);transform:translateY(-1px)}
+.foot .btn:hover{
+  background:rgba(201,168,106,0.10);
+  border-color:rgba(201,168,106,0.45);
+  color:var(--gold-soft);
+  transform:translateY(-1px)
+}
 @media (max-width:700px){.foot .container{gap:.5rem}}
 
 /* ACCESSIBILITY */
-:focus-visible{outline:2px solid transparent;box-shadow:0 0 0 3px rgba(76,139,245,.35);border-radius:8px}
+:focus-visible{
+  outline:2px solid transparent;
+  box-shadow:0 0 0 3px rgba(201,168,106,.45);
+  border-radius:8px
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 /* Responsive Nav tweaks */
@@ -233,11 +306,11 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 /* -------- BULLETS (single marker, deeper visual indent) -------- */
 /* IMPORTANT: no custom ::before bullets anywhere to avoid duplication */
 .section.about ul.indented-list{
-  list-style: disc outside;     /* native bullets */
-  padding-left: 1.2rem;         /* standard bullet gutter */
+  list-style: disc outside;
+  padding-left: 1.2rem;
   margin-top:.15rem;
   margin-bottom:.35rem;
-  margin-left: 2.2rem;          /* EXTRA offset so they sit further right than prose */
+  margin-left: 2.2rem;
   max-width: var(--measure);
 }
 .section.about ul.indented-list li{
@@ -247,7 +320,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .section.about ul.indented-list ul{
   list-style: circle;
   margin-top:.3rem;
-  margin-left: 1.8rem;          /* nested step-in */
+  margin-left: 1.8rem;
 }
 
 /* If the list crowded the photo, you can add class 'clear-right' on the UL */
@@ -278,7 +351,7 @@ h2 + p, h3 + p { margin-top: .15rem }
       background-repeat: no-repeat, no-repeat;
       background-size: cover, cover;
       background-image:
-        linear-gradient(rgba(28,30,34,0.88), rgba(28,30,34,0.88)),
+        linear-gradient(rgba(29,31,33,0.88), rgba(29,31,33,0.88)),
         url("./melbourne-skyline.webp");
     }
   }
@@ -289,7 +362,7 @@ h2 + p, h3 + p { margin-top: .15rem }
 .bg-layer::before{
   content:""; position:fixed; inset:0; z-index:-1;
   background:
-    linear-gradient(rgba(28,30,34,0.94), rgba(28,30,34,0.94)),
+    linear-gradient(rgba(29,31,33,0.94), rgba(29,31,33,0.94)),
     url("./melbourne-skyline.webp") center / cover no-repeat;
 }
 @media (max-width: 900px){
@@ -297,7 +370,7 @@ h2 + p, h3 + p { margin-top: .15rem }
     .bg-layer::before{
       position:absolute;
       background:
-        linear-gradient(rgba(28,30,34,0.88), rgba(28,30,34,0.88)),
+        linear-gradient(rgba(29,31,33,0.88), rgba(29,31,33,0.88)),
         url("./melbourne-skyline.webp") center top / cover no-repeat;
     }
   }
@@ -349,55 +422,51 @@ h2 + p, h3 + p { margin-top: .15rem }
 /* === FIX: Prevent CTA button cut-off on mobile nav === */
 @media (max-width: 700px) {
   .nav {
-    padding-block: 0.9rem 0.9rem; /* slightly taller nav on mobile */
+    padding-block: 0.9rem 0.9rem;
   }
 
   .menu .cta {
-    padding: 0.55rem 0.95rem;     /* slightly smaller button */
-    font-size: 0.95rem;           /* scales text down a bit */
+    padding: 0.55rem 0.95rem;
+    font-size: 0.95rem;
   }
 
-  /* Ensures the button never clips the nav edges */
   .nav-inner {
     align-items: center;
-    min-height: 60px;             /* ensures enough room for CTA */
+    min-height: 60px;
   }
 }
 /* === FIX: Button text size for forms (Send message) === */
 .btn,
 button[type="submit"] {
-  font-size: 1rem;        /* increase from default ~0.9rem */
-  padding: 0.95rem 1.25rem; /* slightly roomier touch target */
-  letter-spacing: 0.01em; /* tiny tracking for clarity */
+  font-size: 1rem;
+  padding: 0.95rem 1.25rem;
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 700px) {
   .btn,
   button[type="submit"] {
-    font-size: 1.02rem;    /* slightly larger on mobile for readability */
+    font-size: 1.02rem;
     padding: 1rem 1.3rem;
   }
 }
 /* === Mobile nav: keep CTA fully visible === */
 @media (max-width: 640px){
-  /* 1) Stop horizontal scrolling that clips the CTA */
   .nav .menu{
-    overflow: visible !important;      /* was overflow-x:auto */
-    flex-wrap: wrap;                    /* allow items to wrap if needed */
+    overflow: visible !important;
+    flex-wrap: wrap;
     gap: .9rem;
-    padding-right: calc(env(safe-area-inset-right) + 12px); /* respect iOS safe area */
+    padding-right: calc(env(safe-area-inset-right) + 12px);
   }
 
-  /* 2) Ensure the CTA sits on the right and never gets cropped */
   .nav .menu .cta{
-    margin-left: auto;                  /* push to the right within wrapped row */
+    margin-left: auto;
     margin-right: 0;
-    flex: 0 0 auto;                     /* prevent shrinking */
-    font-size: 1rem;                    /* readable on small screens */
-    padding: .62rem 1rem;               /* compact but tappable */
+    flex: 0 0 auto;
+    font-size: 1rem;
+    padding: .62rem 1rem;
   }
 
-  /* 3) Give the bar enough height so nothing touches edges */
   .nav{
     padding-top: 0.9rem;
     padding-bottom: 0.9rem;
@@ -405,14 +474,13 @@ button[type="submit"] {
     padding-right: calc(env(safe-area-inset-right) + 12px);
   }
   .nav-inner{
-    min-height: 60px;                   /* guarantees room for the CTA */
+    min-height: 60px;
     align-items: center;
   }
 }
 /* === MOBILE NAV: keep CTA on same row, aligned right === */
 @media (max-width: 640px){
 
-  /* Layout: brand | links ... [CTA] */
   .nav-inner{
     display:flex;
     align-items:center;
@@ -423,57 +491,48 @@ button[type="submit"] {
   }
 
   .nav .brand{
-    flex:0 1 auto;               /* logo+name */
+    flex:0 1 auto;
     min-width:0;
   }
 
   .nav .menu{
-    flex:1 1 auto;               /* takes remaining space between brand and CTA */
+    flex:1 1 auto;
     display:flex;
     align-items:center;
     gap:.9rem;
     white-space:nowrap;
-    overflow:visible !important; /* no horizontal scroller */
-    flex-wrap:nowrap;            /* keep on one line */
-    order:0;                     /* undo any previous order change */
+    overflow:visible !important;
+    flex-wrap:nowrap;
+    order:0;
   }
 
-  .nav .menu a{                  /* Home / Services / About */
-    flex:0 0 auto;               /* don’t shrink into ellipses */
+  .nav .menu a{
+    flex:0 0 auto;
   }
 
   .nav .menu .cta{
-    margin-left:auto;            /* push all the way right */
-    flex:0 0 auto;               /* never shrink or wrap */
+    margin-left:auto;
+    flex:0 0 auto;
     font-size:1rem;
-    padding:.58rem 1rem;         /* compact but tappable */
+    padding:.58rem 1rem;
     border-radius:12px;
   }
 
-  /* Slightly taller bar so nothing clips */
   .nav{
     padding-block:.85rem;
   }
 }
 
-
-
-
-
-
-
-
-
 /* === Slight transparency for dark hero sections === */
 .hero {
-  background: rgba(28, 30, 34, 0.85); /* 85% opaque dark background */
+  background: rgba(29, 31, 33, 0.85);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
 
 /* If you're using hero--solid or hero--fade variants */
 .hero--solid {
-  background: rgba(28, 30, 34, 0.85) !important;
+  background: rgba(29, 31, 33, 0.85) !important;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -481,12 +540,14 @@ button[type="submit"] {
 .hero--fade::after {
   background: linear-gradient(
     to bottom,
-    rgba(28, 30, 34, 0.85) 0%,
-    rgba(28, 30, 34, 0.65) 40%,
-    rgba(28, 30, 34, 0.35) 75%,
-    rgba(28, 30, 34, 0.00) 100%
+    rgba(29, 31, 33, 0.85) 0%,
+    rgba(29, 31, 33, 0.65) 40%,
+    rgba(29, 31, 33, 0.35) 75%,
+    rgba(29, 31, 33, 0.00) 100%
   );
-}/* Make entire service cards clickable links */
+}
+
+/* Make entire service cards clickable links */
 .card-link {
   display: block;
   text-decoration: none;
@@ -502,4 +563,3 @@ button[type="submit"] {
   transform: translateY(-3px);
   box-shadow: var(--shadow-2);
 }
-
