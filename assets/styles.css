@@ -508,13 +508,11 @@ button[type="submit"] {
     flex: 0 0 auto;
     font-size: 1rem;
     padding: .62rem 1rem;
+    border-radius:12px;
   }
 
   .nav{
-    padding-top: 0.9rem;
-    padding-bottom: 0.9rem;
-    padding-left: calc(env(safe-area-inset-left) + 12px);
-    padding-right: calc(env(safe-area-inset-right) + 12px);
+    padding-block:.85rem;
   }
   .nav-inner{
     min-height: 60px;
@@ -651,7 +649,149 @@ button[type="submit"] {
   box-shadow: 0 0 0 3px rgba(93,160,213,0.35);
 }
 
-background: none !important;
-border: none !important;
-box-shadow: none !important;
-backdrop-filter: none !important;
+
+/* =========================================================
+   SERVICES PAGE: STAGE-BASED LAYOUT (no boxes, big faded images)
+   ========================================================= */
+
+.services-flow{
+  padding-block: clamp(2.75rem, 7vw, 4.5rem);
+}
+
+.service-stage{
+  position:relative;
+  min-height:80vh;
+  margin-block: clamp(3.5rem, 10vh, 5.5rem);
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+
+.service-stage.is-active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* text block – override card only inside services */
+.services-flow .card{
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+
+  max-width:560px;
+  padding:0;
+  margin:0;
+
+  position:relative;
+  z-index:2;
+
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+
+/* text reveal */
+.service-stage.is-active .card{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* leave room for big image */
+.stage-right .card{ margin-right:32vw; }
+.stage-left  .card{ margin-left:32vw; }
+
+/* LARGE side image with fading edges */
+.service-img{
+  position:absolute;
+  top:50%;
+  width:clamp(600px, 70vw, 1150px);
+  max-width:none;
+  height:auto;
+  pointer-events:none;
+  z-index:1;
+
+  opacity:0;
+  transform:translateY(-50%) translateX(40px);
+  transition:opacity .8s ease .25s, transform .8s ease .25s;
+
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.8) 25%,
+    rgba(0,0,0,0.5) 50%,
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.8) 25%,
+    rgba(0,0,0,0.5) 50%,
+    rgba(0,0,0,0) 100%
+  );
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+
+  filter:brightness(0.9) blur(1px);
+}
+
+/* right-hand stages (1 & 3) */
+.stage-right .service-img{
+  right:-20vw;
+}
+
+/* left-hand stage (2) */
+.stage-left .service-img{
+  left:-20vw;
+}
+
+/* image reveal when stage active */
+.service-stage.is-active .service-img{
+  opacity:0.75;
+  transform:translateY(-50%) translateX(0);
+}
+
+/* mobile: stack nicely */
+@media (max-width:820px){
+  .service-stage{
+    min-height:auto;
+    margin-block:3rem;
+  }
+
+  .stage-right .card,
+  .stage-left .card{
+    margin:0;
+  }
+
+  .services-flow .card{
+    max-width:100%;
+  }
+
+  .service-img{
+    position:relative;
+    top:auto;
+    left:50%;
+    right:auto;
+    width:90%;
+    transform:translateX(-50%);
+    margin-bottom:1.25rem;
+    opacity:0.6;
+  }
+}
+
+/* links in services */
+.stage-link{
+  text-decoration:none;
+  color:inherit;
+  display:block;
+}
+.learn-link{
+  margin-top:.35rem;
+  font-weight:500;
+  text-decoration:none;
+  color:var(--blue);
+}
+.learn-link:hover{
+  color:var(--blue-hover);
+  text-decoration:underline;
+}
