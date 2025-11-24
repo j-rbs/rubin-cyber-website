@@ -54,8 +54,8 @@ body{
 
   background:
     linear-gradient(
-      rgba(7,17,32,0.20),
-      rgba(7,17,32,0.20)
+      rgba(7,17,32,0.10),
+      rgba(7,17,32,0.10)
     ),
     url("./melbourne-skyline2.webp")
       center / cover no-repeat fixed;
