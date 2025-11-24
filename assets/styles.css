@@ -832,24 +832,29 @@ button[type="submit"] {
   transition: opacity .6s ease .25s;
 
   /* True circular fade — all sides */
-  -webkit-mask-image: radial-gradient(circle, 
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.85) 40%,
-    rgba(0,0,0,0.35) 70%,
-    rgba(0,0,0,0) 100%
-  );
-  mask-image: radial-gradient(circle,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.85) 40%,
-    rgba(0,0,0,0.35) 70%,
-    rgba(0,0,0,0) 100%
-  );
 
-  /* Ensure radial fade covers entire image */
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+/* Strong full-border fade on all sides */
+-webkit-mask-image: radial-gradient(circle,
+  rgba(0,0,0,1) 0%,
+  rgba(0,0,0,0.85) 25%,
+  rgba(0,0,0,0.45) 50%,
+  rgba(0,0,0,0.15) 70%,
+  rgba(0,0,0,0) 100%
+);
+mask-image: radial-gradient(circle,
+  rgba(0,0,0,1) 0%,
+  rgba(0,0,0,0.85) 25%,
+  rgba(0,0,0,0.45) 50%,
+  rgba(0,0,0,0.15) 70%,
+  rgba(0,0,0,0) 100%
+);
+
+-webkit-mask-size: 100% 100%;
+mask-size: 100% 100%;
+-webkit-mask-repeat: no-repeat;
+mask-repeat: no-repeat;
+
+
 }
 
 .services-page .service-stage.is-active .service-img {
