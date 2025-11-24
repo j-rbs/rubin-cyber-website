@@ -14,8 +14,8 @@
   <meta name="theme-color" content="#1C1E22">
   <meta name="color-scheme" content="dark">
 
-<style>
-  /* ===== Layout & scroll flow ===== */
+  <style>
+  /* ===== Section layout & scroll effect (simple) ===== */
   .services-flow {
     padding-block: clamp(2.75rem, 7vw, 4.5rem);
   }
@@ -26,106 +26,88 @@
     margin-block: clamp(3rem, 10vh, 5rem);
     opacity: 0;
     transform: translateY(40px);
-    filter: blur(6px);
     transition:
       opacity .7s ease,
-      transform .7s ease,
-      filter .7s ease;
+      transform .7s ease;
   }
 
   .service-stage.is-active {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 
-  /* ===== Text column – use your existing typography ===== */
+  /* ===== Text column (use your existing typography) ===== */
   .card {
     position: relative;
-    max-width: 720px;
+    max-width: 640px;
     padding: 2.5rem 2.75rem 2.75rem;
     margin: 0;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-
-    /* animate in */
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity .6s ease, transform .6s ease;
+    overflow: visible; /* allow image to spill out */
   }
 
-  /* leave space on the side where the image goes */
+  /* leave room for the big image on the side */
   .stage-right .card {
-    margin-right: clamp(10rem, 30vw, 16rem);   /* text – picture */
+    margin-right: clamp(14rem, 32vw, 22rem);   /* text – picture */
   }
 
   .stage-left .card {
-    margin-left: clamp(10rem, 30vw, 16rem);    /* picture – text */
-  }
-
-  .service-stage.is-active .card {
-    opacity: 1;
-    transform: translateY(0);
+    margin-left: clamp(14rem, 32vw, 22rem);    /* picture – text */
   }
 
   .card > * {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* text above image if they overlap a bit */
   }
 
-  /* ===== Image – big, to the side, blurred edges ===== */
+  /* ===== Big side image with fading edges ===== */
   .service-img {
     position: absolute;
     top: 50%;
-    width: clamp(340px, 40vw, 560px);
+    width: clamp(520px, 70vw, 960px);  /* MUCH bigger */
     max-width: none;
     height: auto;
     pointer-events: none;
     z-index: 1;
 
-    /* start hidden for staggered animation */
+    /* start slightly off + fade in after text */
     opacity: 0;
     transform: translateY(-50%) translateX(20px);
     transition: opacity .7s ease .25s, transform .7s ease .25s;
 
-    /* soft fade/blurred edges */
+    /* fade edges out into background */
     -webkit-mask-image: radial-gradient(
       circle at center,
       rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0.95) 40%,
+      rgba(0,0,0,0.9) 45%,
       rgba(0,0,0,0) 100%
     );
     mask-image: radial-gradient(
       circle at center,
       rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0.95) 40%,
+      rgba(0,0,0,0.9) 45%,
       rgba(0,0,0,0) 100%
     );
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-
-    /* slight softening so it feels blended */
-    filter: blur(0.3px);
   }
 
-  /* 01 & 03 → image on the right (text – picture) */
+  /* 01 & 03 → image far to the right */
   .stage-right .service-img {
-    right: 0;
+    right: -18vw;  /* push image further out to the right */
   }
 
-  /* 02 → image on the left (picture – text) */
+  /* 02 → image far to the left */
   .stage-left .service-img {
-    left: 0;
+    left: -18vw;
   }
 
+  /* when active, show the image */
   .service-stage.is-active .service-img {
-    opacity: 0.7;                      /* tweak if you want stronger/weaker */
+    opacity: 0.75;  /* adjust if you want stronger/weaker */
     transform: translateY(-50%) translateX(0);
   }
 
-  /* ===== Mobile: stack nicely ===== */
+  /* ===== Mobile: simple stack ===== */
   @media (max-width: 820px) {
     .service-stage {
       min-height: auto;
@@ -154,13 +136,11 @@
     }
 
     .service-stage.is-active .service-img {
-      opacity: 0.6;
+      opacity: 0.7;
       transform: translateX(-50%);
     }
   }
 
-  /* keep your original link styling for Learn more,
-     just restore the simple version you had before */
   .stage-link {
     text-decoration: none;
     color: inherit;
