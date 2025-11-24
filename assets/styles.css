@@ -21,9 +21,10 @@
   --field-border:#252F3F;
   --muted:#A9B3C5;
 
-  --font-body:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
-  --font-heading:'Space Grotesk','Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --font-logo:'Space Grotesk','Inter',system-ui,Arial,sans-serif;
+  --font-body:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-logo:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
 
   /* Rhythm & Type */
   --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem;
@@ -93,6 +94,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   font-family:var(--font-logo);
   font-weight:700;
   letter-spacing:-0.03em;
+  font-style: italic;
   font-size:1.38rem!important; line-height:1;
 }
 
@@ -160,11 +162,18 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 }
 .badge{
   display:inline-block;
-  background:rgba(230,232,235,0.9);
-  color:#0C1B33;
-  padding:.42rem .9rem;border-radius:999px;
-  font-size:.8rem;font-weight:650;letter-spacing:.12em;text-transform:uppercase
+  background: rgba(93,160,213,0.20); /* icy blue wash */
+  color: var(--ice);                 /* icy blue text */
+  border: 1.5px solid rgba(93,160,213,0.45);
+  padding:.42rem .9rem;
+  border-radius: 999px;
+  font-size:.8rem;
+  font-weight:650;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  backdrop-filter: blur(4px);
 }
+
 .hero h1{margin-top:var(--space-3); color:#F9FAFB}
 .hero p{color:var(--muted);max-width:760px;margin-inline:auto; margin-top:.8rem}
 
