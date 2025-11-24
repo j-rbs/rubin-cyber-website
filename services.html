@@ -25,8 +25,68 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Rubin Cyber - Practical, no-nonsense cybersecurity">
-  <meta name="twitter:description" content="Stage-based roadmaps and advisory for SMBs and startups.">
+  <meta name="twitter:twitter:description" content="Stage-based roadmaps and advisory for SMBs and startups.">
   <meta name="twitter:image" content="https://j-rbs.github.io/rubin-cyber-website/assets/og-image.png">
+
+  <style>
+    /* === Services page: image + text layout inside cards === */
+    .card--service {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .card--service-media img {
+      width: 100%;
+      height: 100%;
+      max-height: 210px;
+      object-fit: cover;
+      border-radius: 0.9rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    .card--service-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card--service-body .kicker {
+      margin-bottom: 0.35rem;
+    }
+
+    .card--service-body h3 {
+      margin-bottom: 0.4rem;
+    }
+
+    .card--service-body .list {
+      margin-top: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Make the whole card clickable but keep normal text styles */
+    a.card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a.card-link:hover .card,
+    a.card-link:focus-visible .card {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.32);
+    }
+
+    /* Stack image above text on smaller screens */
+    @media (max-width: 900px) {
+      .card--service {
+        grid-template-columns: 1fr;
+      }
+
+      .card--service-media img {
+        max-height: none;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-layer">
@@ -64,45 +124,60 @@
 
     <!-- 01 · Assess -->
     <a class="card-link" href="./assess.html">
-      <article class="card">
-        <div class="kicker">01 · Assess</div>
-        <h3>Cybersecurity Posture Assessment &amp; Roadmap</h3>
-        <ul class="list">
-          <li>Review of governance, identity, data & network controls</li>
-          <li>Clear prioritised risk register</li>
-          <li>Asset & data visibility (what you have and what matters)</li>
-          <li>Employee awareness & training recommendations</li>
-          <li>Roadmap aligned to growth, compliance, and budget</li>
-        </ul>
-        <p class="mono">Fixed fee · ~2 weeks</p>
+      <article class="card card--service">
+        <div class="card--service-media">
+          <img src="./assets/services/assess.jpg" alt="Reviewing security posture and risks">
+        </div>
+        <div class="card--service-body">
+          <div class="kicker">01 · Assess</div>
+          <h3>Cybersecurity Posture Assessment &amp; Roadmap</h3>
+          <ul class="list">
+            <li>Review of governance, identity, data & network controls</li>
+            <li>Clear, prioritised risk register</li>
+            <li>Asset & data visibility (what you have and what matters)</li>
+            <li>Employee awareness & training recommendations</li>
+            <li>Roadmap aligned to growth, compliance, and budget</li>
+          </ul>
+          <p class="mono">Fixed fee · ~2 weeks</p>
+        </div>
       </article>
     </a>
 
     <!-- 02 · Build -->
     <a class="card-link" href="./build.html">
-      <article class="card">
-        <div class="kicker">02 · Build</div>
-        <h3>Foundations Implementation</h3>
-        <ul class="list">
-          <li>MFA, SSO & access hygiene</li>
-          <li>Endpoint & cloud security essentials</li>
-          <li>Backups, monitoring & response basics</li>
-        </ul>
-        <p class="mono">Milestone based · 3–8 weeks</p>
+      <article class="card card--service">
+        <div class="card--service-media">
+          <img src="./assets/services/build.jpg" alt="Implementing core security foundations">
+        </div>
+        <div class="card--service-body">
+          <div class="kicker">02 · Build</div>
+          <h3>Foundations Implementation</h3>
+          <ul class="list">
+            <li>MFA, SSO & access hygiene</li>
+            <li>Endpoint & cloud security essentials</li>
+            <li>Backups, monitoring & response basics</li>
+          </ul>
+          <p class="mono">Milestone based · 3–8 weeks</p>
+        </div>
       </article>
     </a>
 
     <!-- 03 · Evolve -->
     <a class="card-link" href="./evolve.html">
-      <article class="card">
-        <div class="kicker">03 · Evolve</div>
-        <h3>Ongoing Advisory &amp; Improvement</h3>
-        <ul class="list">
-          <li>Quarterly posture reviews & roadmap updates</li>
-          <li>Vendor selection, tooling advice & integrations</li>
-          <li>Security awareness, workshops & IR drills</li>
-        </ul>
-        <p class="mono">Retainer or ad-hoc</p>
+      <article class="card card--service">
+        <div class="card--service-media">
+          <img src="./assets/services/evolve.jpg" alt="Ongoing cybersecurity advisory and improvement">
+        </div>
+        <div class="card--service-body">
+          <div class="kicker">03 · Evolve</div>
+          <h3>Ongoing Advisory &amp; Improvement</h3>
+          <ul class="list">
+            <li>Quarterly posture reviews & roadmap updates</li>
+            <li>Vendor selection, tooling advice & integrations</li>
+            <li>Security awareness, workshops & IR drills</li>
+          </ul>
+          <p class="mono">Retainer or ad-hoc</p>
+        </div>
       </article>
     </a>
 
