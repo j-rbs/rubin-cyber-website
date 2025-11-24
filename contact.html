@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Contact — Rubin Cyber</title>
-  <meta name="description" content="Contact Rubin Cyber to book a short intro call."/>
+  <meta name="description" content="Get in touch with Rubin Cyber to talk about your security posture, foundations, or ongoing advisory."/>
   <link rel="canonical" href="https://j-rbs.github.io/rubin-cyber-website/contact.html">
   <meta name="theme-color" content="#1C1E22">
   <meta name="color-scheme" content="dark">
@@ -12,13 +12,13 @@
   <!-- Social -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact — Rubin Cyber">
-  <meta property="og:description" content="Tell me where you are today. We’ll map the next sensible steps.">
+  <meta property="og:description" content="Share where you are today, and we’ll work out the next sensible steps for your security.">
   <meta property="og:image" content="https://j-rbs.github.io/rubin-cyber-website/assets/og-image.png">
   <meta property="og:url" content="https://j-rbs.github.io/rubin-cyber-website/contact.html">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact — Rubin Cyber">
-  <meta name="twitter:description" content="Tell me where you are today. We’ll map the next sensible steps.">
+  <meta name="twitter:description" content="Share where you are today, and we’ll work out the next sensible steps for your security.">
   <meta name="twitter:image" content="https://j-rbs.github.io/rubin-cyber-website/assets/og-image.png">
 
   <link rel="icon" type="image/svg+xml" href="./assets/icon.svg?v=12">
@@ -27,15 +27,7 @@
   <link rel="stylesheet" href="./assets/styles.css?v=20">
 
   <style>
-    /* Mobile nav fix */
-    .nav-inner { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; }
-    @media (max-width:640px){
-      .brand{ flex:1 1 100%; margin-bottom:.5rem; }
-      .menu{ flex:1 1 100%; justify-content:flex-start; }
-      .menu a{ margin-right:1rem; }
-    }
-
-    /* Remove card styling for the details area */
+    /* Contact page content styling (nav uses global styles) */
     #contact .details {
       color: var(--text);
       padding: 1rem 0;
@@ -48,6 +40,20 @@
     #contact .details ul {
       list-style: disc;
       margin-left: 1.5rem;
+    }
+    #contact .helper {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    /* Slightly larger button text on this page if needed */
+    #contact .btn {
+      font-size: 1rem;
+    }
+    @media (max-width: 800px){
+      #contact .container {
+        gap: 1.75rem;
+      }
     }
   </style>
 
@@ -83,7 +89,11 @@
   <section class="hero">
     <div class="container">
       <span class="badge">Let’s talk</span>
-      <h1>Tell me where you are today. We’ll map the next sensible steps.</h1>
+      <h1>Tell me where you are today — we’ll work out the next sensible steps.</h1>
+      <p class="muted">
+        A short message is enough. Share what’s on your mind — a specific concern, an upcoming change,
+        or just that things feel unclear. I’ll get back to you within 1–2 business days.
+      </p>
     </div>
   </section>
 
@@ -112,7 +122,7 @@
               <button class="btn" type="submit">Send message</button>
             </div>
           </div>
-          <p class="helper">No newsletter, no spam - just a response within 1–2 business days.</p>
+          <p class="helper">No newsletter, no spam — just a reply from me within 1–2 business days.</p>
           <noscript>
             <p class="helper">JavaScript is disabled. Please email <a href="mailto:hello@rubincyber.com">hello@rubincyber.com</a>.</p>
           </noscript>
@@ -125,26 +135,27 @@
         <ul>
           <li>Based in Melbourne, AU</li>
           <li>Email: <a href="mailto:hello@rubincyber.com">hello@rubincyber.com</a></li>
-          <li>ABN / ASIC details (when ready)</li>
+          <li>ABN: 29827004598</li>
         </ul>
       </div>
 
     </div>
   </section>
 
-<footer class="foot">
-  <div class="container foot-inner">
-    <span class="foot-copy">© Rubin Cyber 2025 · Melbourne, AU</span>
-
-    <nav class="foot-links">
-      <a href="./privacy.html" class="foot-link">Privacy Policy</a> · 
-      <a href="./contact.html" class="foot-cta">Book a Consultation</a>
-    </nav>
-  </div>
-</footer>
+  <footer class="foot">
+    <div class="container foot-inner">
+      <span class="foot-copy">© Rubin Cyber 2025 · Melbourne, AU</span>
+      <nav class="foot-links">
+        <a href="./privacy.html" class="foot-link">Privacy Policy</a> · 
+        <a href="./contact.html" class="foot-cta">Book a Consultation</a>
+      </nav>
+    </div>
+  </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Avoid errors if #year doesn't exist
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     (function () {
       const form = document.getElementById('contact-form');
