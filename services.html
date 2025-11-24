@@ -14,79 +14,81 @@
   <meta name="theme-color" content="#1C1E22">
   <meta name="color-scheme" content="dark">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Rubin Cyber">
-  <meta property="og:title" content="Rubin Cyber - Practical, no-nonsense cybersecurity">
-  <meta property="og:description" content="Vendor-neutral roadmaps and advisory to help you scale securely.">
-  <meta property="og:url" content="https://j-rbs.github.io/rubin-cyber-website/">
-  <meta property="og:image" content="https://j-rbs.github.io/rubin-cyber-website/assets/og-image.png">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rubin Cyber - Practical, no-nonsense cybersecurity">
-  <meta name="twitter:twitter:description" content="Stage-based roadmaps and advisory for SMBs and startups.">
-  <meta name="twitter:image" content="https://j-rbs.github.io/rubin-cyber-website/assets/og-image.png">
-
   <style>
-    /* === Services page: image + text layout inside cards === */
-    .card--service {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
-      gap: 1.5rem;
-      align-items: flex-start;
+    /* ===== Premium scroll flow ===== */
+    .services-flow {
+      padding-block: clamp(2.75rem, 7vw, 4.5rem);
     }
 
-    .card--service-media img {
-      width: 100%;
-      height: 100%;
-      max-height: 210px;
+    .service-stage {
+      min-height: 90vh;
+      margin-block: clamp(3rem, 10vh, 5rem);
+      opacity: 0.15;
+      transform: translateY(40px);
+      filter: blur(1px);
+      transition: opacity .6s ease, transform .6s ease, filter .6s ease;
+    }
+
+    .service-stage.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      filter: none;
+    }
+
+    /* Image alignment alternating (right → left → right) */
+    .service-img {
+      width: 330px;
       object-fit: cover;
-      border-radius: 0.9rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      border-radius: 1rem;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.25);
+      margin: 0 0 1.5rem 2rem;
+      float: right;
+      shape-outside: inset(0 round 1rem);
     }
 
-    .card--service-body {
-      display: flex;
-      flex-direction: column;
+    .stage-left .service-img {
+      float: left;
+      margin: 0 2rem 1.5rem 0;
+      shape-outside: inset(0 round 1rem);
     }
 
-    .card--service-body .kicker {
-      margin-bottom: 0.35rem;
+    /* Mobile resets */
+    @media (max-width: 820px) {
+      .service-img {
+        float: none !important;
+        display: block;
+        width: 85%;
+        margin: 0 auto 1.5rem auto !important;
+        shape-outside: none;
+      }
+      .service-stage {
+        min-height: auto;
+        margin-block: 3.5rem;
+      }
     }
 
-    .card--service-body h3 {
-      margin-bottom: 0.4rem;
+    .card {
+      backdrop-filter: blur(8px);
     }
 
-    .card--service-body .list {
-      margin-top: 0.4rem;
-      margin-bottom: 0.6rem;
-    }
-
-    /* Make the whole card clickable but keep normal text styles */
-    a.card-link {
+    .stage-link {
       text-decoration: none;
       color: inherit;
+      display: block;
     }
 
-    a.card-link:hover .card,
-    a.card-link:focus-visible .card {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.32);
+    .learn-link {
+      margin-top: .35rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--blue);
     }
-
-    /* Stack image above text on smaller screens */
-    @media (max-width: 900px) {
-      .card--service {
-        grid-template-columns: 1fr;
-      }
-
-      .card--service-media img {
-        max-height: none;
-      }
+    .learn-link:hover {
+      color: var(--blue-hover);
+      text-decoration: underline;
     }
   </style>
+
 </head>
 
 <body class="bg-layer">
@@ -118,68 +120,70 @@
   </div>
 </section>
 
-<!-- SERVICE STAGES -->
-<section class="section">
-  <div class="container grid one">
+<!-- ===== SCROLLING STAGES WITH ALTERNATING IMAGES ===== -->
+<section class="section services-flow">
+  <div class="container">
 
-    <!-- 01 · Assess -->
-    <a class="card-link" href="./assess.html">
-      <article class="card card--service">
-        <div class="card--service-media">
-          <img src="./assets/assess.jpg" alt="Reviewing security posture and risks">
-        </div>
-        <div class="card--service-body">
+    <!-- 01 · Assess (image right) -->
+    <div class="service-stage stage-right" data-stage="assess">
+      <a class="stage-link" href="./assess.html">
+        <article class="card">
+          <img src="./assets/assess.jpg" class="service-img" alt="Cybersecurity assessment">
           <div class="kicker">01 · Assess</div>
           <h3>Cybersecurity Posture Assessment &amp; Roadmap</h3>
+          <p>A sharp, structured overview of where you stand today — and the most impactful next steps.</p>
           <ul class="list">
-            <li>Review of governance, identity, data & network controls</li>
+            <li>Governance, identity, data & network review</li>
             <li>Clear, prioritised risk register</li>
-            <li>Asset & data visibility (what you have and what matters)</li>
-            <li>Employee awareness & training recommendations</li>
-            <li>Roadmap aligned to growth, compliance, and budget</li>
+            <li>Asset & data visibility</li>
+            <li>Training & awareness recommendations</li>
+            <li>Roadmap aligned to growth & compliance</li>
           </ul>
           <p class="mono">Fixed fee · ~2 weeks</p>
-        </div>
-      </article>
-    </a>
+          <span class="learn-link">Learn more →</span>
+        </article>
+      </a>
+    </div>
 
-    <!-- 02 · Build -->
-    <a class="card-link" href="./build.html">
-      <article class="card card--service">
-        <div class="card--service-media">
-          <img src="./assets/build.jpg" alt="Implementing core security foundations">
-        </div>
-        <div class="card--service-body">
+    <!-- 02 · Build (image left) -->
+    <div class="service-stage stage-left" data-stage="build">
+      <a class="stage-link" href="./build.html">
+        <article class="card">
+          <img src="./assets/build.jpg" class="service-img" alt="Security implementation">
           <div class="kicker">02 · Build</div>
           <h3>Foundations Implementation</h3>
+          <p>Turn the roadmap into real controls — without expensive over-engineering or tool sprawl.</p>
           <ul class="list">
             <li>MFA, SSO & access hygiene</li>
             <li>Endpoint & cloud security essentials</li>
-            <li>Backups, monitoring & response basics</li>
+            <li>Backups, monitoring & IR basics</li>
+            <li>Documentation that’s actually usable</li>
           </ul>
           <p class="mono">Milestone based · 3–8 weeks</p>
-        </div>
-      </article>
-    </a>
+          <span class="learn-link">Learn more →</span>
+        </article>
+      </a>
+    </div>
 
-    <!-- 03 · Evolve -->
-    <a class="card-link" href="./evolve.html">
-      <article class="card card--service">
-        <div class="card--service-media">
-          <img src="./assets/evolve.jpg" alt="Ongoing cybersecurity advisory and improvement">
-        </div>
-        <div class="card--service-body">
+    <!-- 03 · Evolve (image right) -->
+    <div class="service-stage stage-right" data-stage="evolve">
+      <a class="stage-link" href="./evolve.html">
+        <article class="card">
+          <img src="./assets/evolve.jpg" class="service-img" alt="Cyber advisory">
           <div class="kicker">03 · Evolve</div>
           <h3>Ongoing Advisory &amp; Improvement</h3>
+          <p>A calm monthly partner for your security decisions — keeping things modern without overwhelm.</p>
           <ul class="list">
-            <li>Quarterly posture reviews & roadmap updates</li>
-            <li>Vendor selection, tooling advice & integrations</li>
-            <li>Security awareness, workshops & IR drills</li>
+            <li>Quarterly posture reviews</li>
+            <li>Vendor selection & tool guidance</li>
+            <li>Awareness, workshops & IR drills</li>
+            <li>Lightweight ongoing support</li>
           </ul>
           <p class="mono">Retainer or ad-hoc</p>
-        </div>
-      </article>
-    </a>
+          <span class="learn-link">Learn more →</span>
+        </article>
+      </a>
+    </div>
 
   </div>
 </section>
@@ -193,6 +197,34 @@
     </nav>
   </div>
 </footer>
+
+<script>
+  // Scroll-based stage activation
+  (function () {
+    const stages = document.querySelectorAll('.service-stage');
+    if (!stages.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      stages.forEach(s => s.classList.add('is-active'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stages.forEach(s => s.classList.remove('is-active'));
+            entry.target.classList.add('is-active');
+          }
+        });
+      },
+      { threshold: 0.55 }
+    );
+
+    stages.forEach(stage => observer.observe(stage));
+    stages[0].classList.add('is-active');
+  })();
+</script>
 
 </body>
 </html>
