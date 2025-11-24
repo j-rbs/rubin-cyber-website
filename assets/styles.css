@@ -124,7 +124,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   border-bottom-color:var(--blue);
 }
 
-/* NAV CTA — Executive Minimal */
+/* NAV CTA - Executive Minimal */
 .menu .cta{
   background: transparent;
   color: var(--ice);
@@ -331,7 +331,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .section.about{ font-size:1.05rem }
 .section.about .container{ max-width:900px }
 
-/* Floated image — keep as-is */
+/* Floated image - keep as-is */
 .section.about .about-photo{
   float:right;width:300px;margin:0 0 var(--space-6) var(--space-7);
   border-radius:1rem;object-fit:cover;
