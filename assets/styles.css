@@ -650,12 +650,12 @@ button[type="submit"] {
 }
 
 /* =========================================================
-   SERVICES PAGE — FINAL WORKING VERSION
-   Image behind text, controllable position, full radial fade
-   ========================================================= */
+   SERVICES PAGE — FIXED VERSION
+========================================================= */
 
 .services-page .service-stage {
-  position: relative;
+  position: relative;          /* THIS is the stacking context now */
+  z-index: 1;
   min-height: 85vh;
   margin-block: 8rem;
   opacity: 0;
@@ -668,16 +668,15 @@ button[type="submit"] {
   transform: translateY(0);
 }
 
-/* --- TEXT BLOCK --- */
+/* TEXT ABOVE IMAGE */
 .services-page .service-stage .card {
   position: relative;
-  z-index: 3;              /* text ALWAYS on top */
-  max-width: 600px;
+  z-index: 10 !important;       /* FORCE text above image */
+  max-width: 620px;
+  padding: 0;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
-  backdrop-filter: none !important;
-  padding: 0;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity .6s ease, transform .6s ease;
@@ -688,53 +687,54 @@ button[type="submit"] {
   transform: translateY(0);
 }
 
-/* --- IMAGE BEHIND TEXT --- */
+/* IMAGE BEHIND TEXT */
 .services-page .service-stage .service-img {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%) scale(1.1);
-  width: 60vw;
-  max-width: 900px;
-  opacity: 0;
-  z-index: 1; /* behind text */
+  transform: translateY(-50%);
+  z-index: 1;
+
+  width: 65vw;
+  height: 65vh;                 /* FIX distortion → correct radial fade */
   object-fit: cover;
 
-  transition: opacity .9s ease .2s, transform .9s ease .2s;
+  opacity: 0;
+  transition: opacity .9s ease .25s, transform .9s ease .25s;
 
-  /* TRUE radial fade (all four edges) */
-  -webkit-mask-image: radial-gradient(circle at center,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0.9) 35%,
-      rgba(0,0,0,0.5) 60%,
-      rgba(0,0,0,0) 85%
+  /* TRUE circular fade on all edges */
+  -webkit-mask-image: radial-gradient(
+    circle,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.85) 35%,
+    rgba(0,0,0,0.40) 60%,
+    rgba(0,0,0,0) 90%
   );
-  mask-image: radial-gradient(circle at center,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0.9) 35%,
-      rgba(0,0,0,0.5) 60%,
-      rgba(0,0,0,0) 85%
+  mask-image: radial-gradient(
+    circle,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.85) 35%,
+    rgba(0,0,0,0.40) 60%,
+    rgba(0,0,0,0) 90%
   );
+
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-
-  filter: brightness(0.9);  /* no blur */
 }
 
 .services-page .service-stage.is-active .service-img {
-  opacity: 0.85;
-  transform: translateY(-50%) scale(1.0);
+  opacity: .85;
 }
 
-/* --- POSITIONING: RIGHT / LEFT / RIGHT --- */
+/* RIGHT / LEFT POSITIONING */
 .services-page .stage-right .service-img {
-  right: -10vw;
+  right: -12vw;
 }
 
 .services-page .stage-left .service-img {
-  left: -10vw;
+  left: -12vw;
 }
 
-/* MOBILE LAYOUT */
+/* MOBILE */
 @media (max-width: 820px) {
   .services-page .service-stage {
     min-height: auto;
@@ -744,17 +744,18 @@ button[type="submit"] {
   .services-page .service-stage .service-img {
     position: relative;
     top: auto;
-    transform: translateY(0);
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: auto;
     max-width: 90%;
-    margin: 0 auto 1.5rem auto;
-    opacity: 0.9;
+    margin-bottom: 1.5rem;
   }
 
   .services-page .stage-right .service-img,
   .services-page .stage-left .service-img {
     left: 50%;
     right: auto;
-    transform: translateX(-50%);
   }
 }
+
