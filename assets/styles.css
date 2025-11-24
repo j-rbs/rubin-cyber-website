@@ -650,3 +650,8 @@ button[type="submit"] {
   outline: none;
   box-shadow: 0 0 0 3px rgba(93,160,213,0.35);
 }
+
+background: none !important;
+border: none !important;
+box-shadow: none !important;
+backdrop-filter: none !important;
