@@ -589,3 +589,48 @@ button[type="submit"] {
   transform: translateY(-3px);
   box-shadow: var(--shadow-2);
 }
+
+/* === Match section buttons to the nav CTA === */
+.section .btn,
+.section button,
+.section a.btn {
+  background: transparent;
+  color: var(--ice);
+  border: 1.5px solid rgba(93,160,213,0.55);
+  padding: .65rem 1.05rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.97rem;
+  letter-spacing: 0.015em;
+  text-decoration: none;
+  display: inline-block;
+  transition:
+    background .18s ease,
+    color .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease,
+    transform .08s ease;
+}
+
+.section .btn:hover,
+.section button:hover,
+.section a.btn:hover {
+  background: rgba(93,160,213,0.12);
+  border-color: var(--ice);
+  color: var(--ice-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.section .btn:active,
+.section button:active,
+.section a.btn:active {
+  background: rgba(93,160,213,0.18);
+  transform: none;
+  box-shadow: none;
+}
+
+.section .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(93,160,213,0.35);
+}
