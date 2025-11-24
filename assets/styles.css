@@ -486,4 +486,20 @@ button[type="submit"] {
     rgba(28, 30, 34, 0.35) 75%,
     rgba(28, 30, 34, 0.00) 100%
   );
+}/* Make entire service cards clickable links */
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
+
+.card-link .card {
+  cursor: pointer;
+}
+
+.card-link:hover .card,
+.card-link:focus-visible .card {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+}
+
