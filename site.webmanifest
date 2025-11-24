@@ -1,6 +1,6 @@
 {
   "name": "Rubin Cyber",
-  "short_name": "RubinCyber",
+  "short_name": "Rubin Cyber",
   "description": "Practical, stage-based cybersecurity consulting.",
   "start_url": "/",
   "scope": "/",
@@ -9,6 +9,6 @@
   "theme_color": "#4C8BF5",
   "icons": [
     { "src": "./assets/icon.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "./assets/icons.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "./assets/icon.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
