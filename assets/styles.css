@@ -50,12 +50,18 @@ body{
   font-family:var(--font-body);
   line-height:var(--lh-normal);
   -webkit-font-smoothing:antialiased;
+
   background:
-    linear-gradient(rgba(7,17,32,0.96), rgba(7,17,32,0.94)),
+    linear-gradient(
+      rgba(7,17,32,0.70), 
+      rgba(7,17,32,0.70)
+    ),
     url("./melbourne-skyline.webp")
-    center / cover no-repeat fixed;
+      center / cover no-repeat fixed;
+
   font-size:16px;
 }
+
 img{display:block;max-width:100%;height:auto}
 .container{width:min(1100px, 90%);margin-inline:auto}
 
