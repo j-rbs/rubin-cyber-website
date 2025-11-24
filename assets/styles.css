@@ -651,147 +651,141 @@ button[type="submit"] {
 
 /* =========================================================
    SERVICES PAGE (scoped to .services-page)
-   Big side images with soft fade, no boxes
+   Grid layout: text + big faded image (R/L/R)
    ========================================================= */
 
 .services-page .services-flow{
   padding-block: clamp(2.75rem, 7vw, 4.5rem);
 }
 
+/* Stage wrapper: 2-column grid */
 .services-page .service-stage{
-  position:relative;
-  min-height:70vh;
+  min-height: 70vh;
   margin-block: clamp(3.5rem, 10vh, 5.5rem);
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity .7s ease, transform .7s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .7s ease, transform .7s ease;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
+  column-gap: clamp(2.5rem, 5vw, 3.5rem);
+  align-items: center;
 }
 
 /* scroll reveal */
 .services-page .service-stage.is-active{
-  opacity:1;
-  transform:translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* TEXT BLOCK – no visible card box on services page */
+/* TEXT BLOCK – override card style only on services */
 .services-page .services-flow .card{
-  background:none !important;
-  border:none !important;
-  box-shadow:none !important;
-  backdrop-filter:none !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 
-  max-width:640px;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
+  max-width: 560px;
 
-  opacity:0;
-  transform:translateY(15px);
-  transition:opacity .5s ease, transform .5s ease;
-}
+  position: relative;
+  z-index: 2; /* always above image if they overlap a bit */
 
-/* card content above image if they overlap a bit */
-.services-page .services-flow .card > *{
-  position:relative;
-  z-index:2;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity .5s ease, transform .5s ease;
+
+  /* default: text in left column */
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .services-page .service-stage.is-active .card{
-  opacity:1;
-  transform:translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* leave room so image sits clearly to the side */
-.services-page .stage-right .card{
-  margin-right: clamp(4rem, 18vw, 10rem);   /* text – picture */
-}
-.services-page .stage-left .card{
-  margin-left: clamp(4rem, 18vw, 10rem);    /* picture – text */
-}
-
-/* clear floated image */
-.services-page .service-stage::after{
-  content:"";
-  display:block;
-  clear:both;
-}
-
-/* BIG SIDE IMAGE with fade, no blur */
+/* IMAGE – big, separate column, full radial fade */
 .services-page .service-img{
-  width: clamp(420px, 40vw, 620px); /* big, but not full screen */
-  max-width:none;
-  object-fit:cover;
-  border-radius:0;
-  box-shadow:none;
-  opacity:0;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  justify-self: center;
 
-  /* fade edges into the background */
+  /* put it in the right column by default */
+  grid-column: 2;
+  grid-row: 1;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .7s ease .25s, transform .7s ease .25s;
+
+  /* strong radial fade on ALL sides */
   -webkit-mask-image: radial-gradient(
-    circle at center,
-    rgba(0,0,0,1)   0%,
+    circle at 50% 50%,
+    rgba(0,0,0,1.0) 0%,
     rgba(0,0,0,0.9) 30%,
     rgba(0,0,0,0.5) 55%,
     rgba(0,0,0,0.0) 80%
   );
   mask-image: radial-gradient(
-    circle at center,
-    rgba(0,0,0,1)   0%,
+    circle at 50% 50%,
+    rgba(0,0,0,1.0) 0%,
     rgba(0,0,0,0.9) 30%,
     rgba(0,0,0,0.5) 55%,
     rgba(0,0,0,0.0) 80%
   );
-  -webkit-mask-repeat:no-repeat;
-  mask-repeat:no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 
-  filter:none; /* no blur */
-  transform:translateY(8px);
-  transition:opacity .7s ease .2s, transform .7s ease .2s;
-}
-
-/* right-aligned stages (1 & 3): text – picture */
-.services-page .stage-right .service-img{
-  float:right;
-  margin: 0 0 1.75rem 2.5rem;   /* pushes picture to the right of text */
-}
-
-/* left-aligned stage (2): picture – text */
-.services-page .stage-left .service-img{
-  float:left;
-  margin: 0 2.5rem 1.75rem 0;
+  filter: none; /* no blur – use the original image */
 }
 
 /* reveal image after text */
 .services-page .service-stage.is-active .service-img{
-  opacity:0.8;
-  transform:translateY(0);
+  opacity: 0.8;
+  transform: translateY(0);
 }
 
-/* Mobile: simple stacked layout */
-@media (max-width:820px){
-  .services-page .service-stage{
-    min-height:auto;
-    margin-block:3rem;
-  }
+/* Stage 1 & 3 (stage-right): text left, image right – already default */
 
-  .services-page .stage-right .card,
-  .services-page .stage-left .card{
-    margin:0;
+/* Stage 2 (stage-left): swap columns → image left, text right */
+.services-page .stage-left .card{
+  grid-column: 2;
+}
+.services-page .stage-left .service-img{
+  grid-column: 1;
+}
+
+/* Mobile: stack image above text */
+@media (max-width: 820px){
+  .services-page .service-stage{
+    grid-template-columns: 1fr;
+    min-height: auto;
+    row-gap: 1.75rem;
+    margin-block: 3rem;
   }
 
   .services-page .services-flow .card{
-    max-width:100%;
+    grid-column: 1;
+    max-width: 100%;
   }
 
   .services-page .service-img{
-    float:none;
-    display:block;
-    width:90%;
-    margin:0 auto 1.25rem auto;
-    opacity:0.9;
-    transform:none;
+    grid-column: 1;
+    max-width: 90%;
+    justify-self: center;
+    opacity: 0.9;
+  }
+
+  .services-page .stage-left .card,
+  .services-page .stage-left .service-img{
+    grid-column: 1;
   }
 }
 
-/* links on services page */
+/* Links on services page */
 .services-page .stage-link{
   text-decoration:none;
   color:inherit;
