@@ -52,7 +52,7 @@ body{
   -webkit-font-smoothing:antialiased;
   background:
     linear-gradient(rgba(7,17,32,0.96), rgba(7,17,32,0.94)),
-    url("./melbourne-skyline2.webp")
+    url("./melbourne-skyline.webp")
     center / cover no-repeat fixed;
   font-size:16px;
 }
@@ -370,7 +370,7 @@ h2 + p, h3 + p { margin-top: .15rem }
       background-size: cover, cover;
       background-image:
         linear-gradient(rgba(7,17,32,0.95), rgba(7,17,32,0.93)),
-        url("./melbourne-skyline2.webp");
+        url("./melbourne-skyline.webp");
     }
   }
 }
@@ -381,7 +381,7 @@ h2 + p, h3 + p { margin-top: .15rem }
   content:""; position:fixed; inset:0; z-index:-1;
   background:
     linear-gradient(rgba(7,17,32,0.97), rgba(7,17,32,0.96)),
-    url("./melbourne-skyline2.webp") center / cover no-repeat;
+    url("./melbourne-skyline.webp") center / cover no-repeat;
 }
 @media (max-width: 900px){
   @supports (-webkit-touch-callout: none) {
@@ -389,7 +389,7 @@ h2 + p, h3 + p { margin-top: .15rem }
       position:absolute;
       background:
         linear-gradient(rgba(7,17,32,0.95), rgba(7,17,32,0.93)),
-        url("./melbourne-skyline2.webp") center top / cover no-repeat;
+        url("./melbourne-skyline.webp") center top / cover no-repeat;
     }
   }
 }
