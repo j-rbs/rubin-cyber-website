@@ -914,7 +914,6 @@ button[type="submit"] {
 /* Default: pull images closer to center so no gap can appear */
 .services-page .service-stage .service-img {
   right: -6vw !important;   /* was -14vw / -18vw */
-  left:  -6vw !important;   /* equalize for left-aligned images */
   width: 86vw !important;   /* was 70–76vw → ensures full bleed */
 }
 
@@ -922,10 +921,4 @@ button[type="submit"] {
 .services-page .stage-left .service-img {
   left: auto !important;
   right: -6vw !important;
-}
-
-/* Text-right layouts (image on left) */
-.services-page .stage-right .service-img {
-  right: auto !important;
-  left: -6vw !important;
 }
