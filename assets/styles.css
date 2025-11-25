@@ -906,3 +906,26 @@ button[type="submit"] {
     linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
     linear-gradient(to right, transparent 0%, black 42%, black 92%, black 100%);
 }
+
+/* =========================================================
+   FIX RIGHT-SIDE GAP ON ALL SERVICE IMAGES
+========================================================= */
+
+/* Default: pull images closer to center so no gap can appear */
+.services-page .service-stage .service-img {
+  right: -6vw !important;   /* was -14vw / -18vw */
+  left:  -6vw !important;   /* equalize for left-aligned images */
+  width: 86vw !important;   /* was 70–76vw → ensures full bleed */
+}
+
+/* Text-left layouts (image on right) */
+.services-page .stage-left .service-img {
+  left: auto !important;
+  right: -6vw !important;
+}
+
+/* Text-right layouts (image on left) */
+.services-page .stage-right .service-img {
+  right: auto !important;
+  left: -6vw !important;
+}
