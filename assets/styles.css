@@ -1071,7 +1071,6 @@ button[type="submit"] {
 }
 
 /* backdrop image at the bottom */
-/* smoother, later, softer fade */
 .assess-backdrop {
   position: absolute;
   left: 50%;
@@ -1079,28 +1078,31 @@ button[type="submit"] {
   transform: translateX(-50%);
   width: 120%;
   max-width: none;
-  height: 420px;
+
+  /* show more of the photo vertically */
+  height: 520px;
   object-fit: cover;
-  opacity: 0.40;
+
+  /* make the picture a bit stronger */
+  opacity: 0.6;
   pointer-events: none;
   z-index: 0;
 
-  /* MUCH softer fade — starts lower, ends gentler */
+  /* softer, later top fade so more of the image is visible */
   -webkit-mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 22%,
-    rgba(0, 0, 0, 0.85) 38%,
-    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0) 0%,      /* very top fully faded */
+    rgba(0, 0, 0, 0.35) 12%,  /* gently easing in */
+    rgba(0, 0, 0, 0.7) 26%,   /* mid-top still soft */
+    rgba(0, 0, 0, 1) 40%,     /* from here down it's solid */
     rgba(0, 0, 0, 1) 100%
   );
-
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.65) 22%,
-    rgba(0, 0, 0, 0.85) 38%,
-    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0.35) 12%,
+    rgba(0, 0, 0, 0.7) 26%,
+    rgba(0, 0, 0, 1) 40%,
     rgba(0, 0, 0, 1) 100%
   );
 }
