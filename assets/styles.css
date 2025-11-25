@@ -1138,7 +1138,7 @@ button[type="submit"] {
 /* Image sits behind the dark overlay and is a touch softer */
 .assess-backdrop {
   z-index: -1;
-  opacity: 0.5;         /* was 0.6 – helps text pop more */
+  opacity: 0.4;         /* was 0.6 – helps text pop more */
 }
 
 /* Make the bottom copy sit “on top” visually */
