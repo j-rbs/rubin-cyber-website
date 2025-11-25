@@ -1106,3 +1106,68 @@ button[type="submit"] {
     rgba(0, 0, 0, 1) 100%
   );
 }
+
+/* ============================================
+   ASSESS PAGE: stronger contrast + icy CTA
+   ============================================ */
+
+/* Darken the bottom area over the image so text reads clearly */
+.assess-section {
+  position: relative;
+}
+
+.assess-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 520px; /* matches image height */
+  background: linear-gradient(
+    to top,
+    rgba(7,17,32,0.96) 0%,
+    rgba(7,17,32,0.90) 28%,
+    rgba(7,17,32,0.78) 55%,
+    rgba(7,17,32,0.45) 78%,
+    rgba(7,17,32,0.00) 100%
+  );
+  z-index: 0;           /* sits above the image, below the text */
+  pointer-events: none;
+}
+
+/* Image sits behind the dark overlay and is a touch softer */
+.assess-backdrop {
+  z-index: -1;
+  opacity: 0.5;         /* was 0.6 – helps text pop more */
+}
+
+/* Make the bottom copy sit “on top” visually */
+.assess-section h2,
+.assess-section h3,
+.assess-section p,
+.assess-section li {
+  color: #F5F7FF;
+  text-shadow: 0 0 14px rgba(0,0,0,0.95);
+}
+
+/* Icy blue, high-visibility CTA button just for this section */
+.assess-section .btn {
+  background: var(--ice);
+  color: #04111F;
+  border-color: rgba(93,160,213,0.95);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.65);
+  padding: 0.95rem 1.4rem;
+  font-weight: 650;
+}
+
+.assess-section .btn:hover {
+  background: var(--ice-hover);
+  border-color: var(--ice-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.75);
+}
+
+.assess-section .btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
