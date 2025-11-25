@@ -647,7 +647,7 @@ button[type="submit"] {
 }
 
 /* =========================================================
-   SERVICES PAGE — EVEN EDGE FADE + PER-IMAGE BIAS
+   SERVICES PAGE — STRONGER SIDE FADES + MORE TRANSPARENT
 ========================================================= */
 
 .services-page .service-stage {
@@ -666,7 +666,7 @@ button[type="submit"] {
   transform: translateY(0);
 }
 
-/* TEXT BLOCK (clean, no blur/background) */
+/* TEXT BLOCK */
 .services-page .service-stage .card {
   position: relative;
   z-index: 10;
@@ -682,13 +682,12 @@ button[type="submit"] {
 }
 
 /* ===============================================
-   BASE IMAGE — EVEN FADE ON ALL FOUR SIDES
-   + SLIGHTLY HIGHER + SLIGHTLY MORE TRANSPARENT
+   BASE IMAGE — even fade + slightly stronger opacity
 =============================================== */
 
 .services-page .service-stage .service-img {
   position: absolute;
-  top: 34%;                       /* slightly higher than center */
+  top: 34%;
   transform: translateY(-50%);
   width: 70vw;
   max-width: 1200px;
@@ -700,114 +699,92 @@ button[type="submit"] {
   opacity: 0;
   transition: opacity .7s ease .25s;
 
-  /* Global even “blur/fade” on all sides */
+  /* Even background fade (keeps it rectangular) */
   box-shadow:
-    0 0 130px 80px rgba(7,17,32,0.98) inset,
-    0 0 130px 80px rgba(7,17,32,0.98) inset;
+    0 0 150px 90px rgba(7,17,32,1) inset,
+    0 0 150px 90px rgba(7,17,32,1) inset;
 
-  border-radius: 0; /* keep the photos square */
-
-  /* Symmetric rectangular fade (top/bottom + left/right) */
+  /* Balanced fade on all 4 edges */
   -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-    linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 20%, black 80%, transparent 100%);
   -webkit-mask-composite: source-in, source-in;
 
   mask-image:
-    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-    linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 20%, black 80%, transparent 100%);
   mask-composite: intersect;
 }
 
-/* When active, fade image in — slightly more transparent overall */
+/* When active → slightly more transparent */
 .services-page .service-stage.is-active .service-img {
-  opacity: 0.8;
+  opacity: 0.72; /* softer blend */
 }
 
-/* ===============================================
-   PER-IMAGE FADE BIAS
-   1st image: stronger left fade
-   2nd image: stronger right fade
-   3rd image: stronger left fade
-   (Assumes 3 .service-stage blocks in order)
-=============================================== */
+/* =========================================================
+   PER-IMAGE SIDE BIAS — STRONGER FADE ON TEXT SIDE
+========================================================= */
 
-/* 1) FIRST IMAGE — STRONGER LEFT FADE */
+/* 1) FIRST SECTION — TEXT LEFT → STRONGER LEFT FADE */
 .services-page .service-stage:nth-of-type(1) .service-img {
   -webkit-mask-image:
-    /* vertical: same as base */
-    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-    /* horizontal: widen transparent zone on the LEFT */
-    linear-gradient(to right, transparent 0%, black 30%, black 85%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 40%, black 85%, transparent 100%);
   mask-image:
-    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 30%, black 85%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 40%, black 85%, transparent 100%);
 }
 
-/* 2) SECOND IMAGE — STRONGER RIGHT FADE */
+/* 2) SECOND SECTION — TEXT RIGHT → STRONGER RIGHT FADE */
 .services-page .service-stage:nth-of-type(2) .service-img {
   -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-    /* horizontal: widen transparent zone on the RIGHT */
-    linear-gradient(to right, transparent 0%, black 15%, black 70%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 12%, black 55%, transparent 100%);
   mask-image:
-    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 15%, black 70%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 12%, black 55%, transparent 100%);
 }
 
-/* 3) THIRD IMAGE — STRONGER LEFT FADE (slightly softer than first) */
+/* 3) THIRD SECTION — TEXT LEFT → STRONGER LEFT FADE (slightly softer than #1) */
 .services-page .service-stage:nth-of-type(3) .service-img {
   -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-    /* horizontal: a bit less aggressive than #1, but still left-weighted */
-    linear-gradient(to right, transparent 0%, black 26%, black 84%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 34%, black 82%, transparent 100%);
   mask-image:
-    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 26%, black 84%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 34%, black 82%, transparent 100%);
 }
 
-/* ===============================================
-   LEFT / RIGHT ALTERNATION
-=============================================== */
+/* =========================================================
+   LEFT / RIGHT POSITIONING
+========================================================= */
 
-.services-page .stage-right .service-img {
-  right: -14vw;
-}
+.services-page .stage-right .service-img { right: -14vw; }
+.services-page .stage-left  .service-img { left:  -14vw; }
 
-.services-page .stage-left .service-img {
-  left: -14vw;
-}
+.services-page .stage-right .card { margin-right: auto; }
+.services-page .stage-left  .card { margin-left:  auto; }
 
-.services-page .stage-right .card {
-  margin-right: auto;
-}
-
-.services-page .stage-left .card {
-  margin-left: auto;
-}
-
-/* ===============================================
+/* =========================================================
    LINKS
-=============================================== */
+========================================================= */
 
 .services-page a {
   text-decoration: none !important;
   color: inherit;
 }
-
 .services-page .learn-link {
   color: var(--blue);
   font-weight: 500;
 }
-
 .services-page .learn-link:hover {
   color: var(--blue-hover);
   text-decoration: underline;
 }
 
-/* ===============================================
+/* =========================================================
    MOBILE
-=============================================== */
+========================================================= */
 
 @media (max-width: 820px) {
   .services-page .service-stage {
@@ -825,42 +802,37 @@ button[type="submit"] {
     max-width: 95%;
     margin-bottom: 1.8rem;
 
-    /* Slightly stronger fade on all sides for small screens */
     box-shadow:
-      0 0 110px 70px rgba(7,17,32,0.98) inset,
-      0 0 110px 70px rgba(7,17,32,0.98) inset;
+      0 0 120px 80px rgba(7,17,32,1) inset,
+      0 0 120px 80px rgba(7,17,32,1) inset;
   }
 
-  /* Re-apply the per-image bias on mobile as well */
-
-  /* First image — stronger left */
+  /* Reapply side fade biases for mobile */
   .services-page .service-stage:nth-of-type(1) .service-img {
     -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%),
-      linear-gradient(to right,  transparent 0%, black 32%, black 86%, transparent 100%);
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 45%, black 90%, transparent 100%);
     mask-image:
-      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%),
-      linear-gradient(to right,  transparent 0%, black 32%, black 86%, transparent 100%);
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 45%, black 90%, transparent 100%);
   }
 
-  /* Second image — stronger right */
   .services-page .service-stage:nth-of-type(2) .service-img {
     -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%),
-      linear-gradient(to right,  transparent 0%, black 15%, black 68%, transparent 100%);
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 10%, black 55%, transparent 100%);
     mask-image:
-      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%),
-      linear-gradient(to right,  transparent 0%, black 15%, black 68%, transparent 100%);
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 10%, black 55%, transparent 100%);
   }
 
-  /* Third image — stronger left (soft) */
   .services-page .service-stage:nth-of-type(3) .service-img {
     -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%),
-      linear-gradient(to right,  transparent 0%, black 28%, black 86%, transparent 100%);
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 38%, black 88%, transparent 100%);
     mask-image:
-      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%),
-      linear-gradient(to right,  transparent 0%, black 28%, black 86%, transparent 100%);
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 38%, black 88%, transparent 100%);
   }
 
   .services-page .stage-right .card,
