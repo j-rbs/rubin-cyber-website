@@ -976,3 +976,15 @@ button[type="submit"] {
     height: 34px;
   }
 }
+/* =========================================================
+   SCROLL ARROW — disappears on scroll
+========================================================= */
+
+.scroll-arrow {
+  transition: opacity .6s ease;
+}
+
+.scroll-arrow.is-hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+}
