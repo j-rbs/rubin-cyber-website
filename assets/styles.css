@@ -885,3 +885,24 @@ button[type="submit"] {
 .services-page .service-stage:nth-of-type(2).is-active .service-img {
   opacity: 0.40 !important; /* softer, blends more with background */
 }
+
+/* =========================================================
+   FIX: remove visible gap above the first service image
+========================================================= */
+
+/* Make the first image extend further right */
+.services-page .service-stage:nth-of-type(1) .service-img {
+  right: -18vw !important;   /* was -14vw */
+  width: 76vw !important;     /* slightly wider to avoid gaps */
+}
+
+/* Reduce the right-side fade so the corner stays fully covered */
+.services-page .service-stage:nth-of-type(1) .service-img {
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
+    /* right side fade softened */
+    linear-gradient(to right, transparent 0%, black 42%, black 92%, black 100%);
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 42%, black 92%, black 100%);
+}
