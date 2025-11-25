@@ -916,3 +916,63 @@ button[type="submit"] {
   right: -6vw !important;   /* was -14vw / -18vw */
   width: 86vw !important;   /* was 70–76vw → ensures full bleed */
 }
+/* =========================================================
+   HERO SCROLL INDICATOR (pulsing arrow)
+========================================================= */
+
+.hero {
+  position: relative; /* so the arrow can sit at the bottom of the hero */
+}
+
+/* Arrow container */
+.hero .scroll-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 1.75rem;                 /* distance from bottom of hero */
+  transform: translateX(-50%);
+  width: 26px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(229, 235, 245, 0.45);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0.75;
+  pointer-events: none;            /* don’t block clicks */
+  animation: scrollArrowPulse 2.4s ease-in-out infinite;
+}
+
+/* The actual chevron arrow */
+.hero .scroll-arrow::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid rgba(229, 235, 245, 0.9);
+  border-bottom: 2px solid rgba(229, 235, 245, 0.9);
+  transform: rotate(45deg) translateY(-4px);
+}
+
+/* Soft pulsing / float animation */
+@keyframes scrollArrowPulse {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translateX(-50%) translateY(6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.4;
+  }
+}
+
+/* Slightly tighter on small screens */
+@media (max-width: 700px) {
+  .hero .scroll-arrow {
+    bottom: 1.1rem;
+    width: 22px;
+    height: 34px;
+  }
+}

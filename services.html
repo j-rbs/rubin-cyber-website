@@ -42,6 +42,9 @@
       strong security foundations without the noise.
     </p>
   </div>
+
+  <!-- ▼▼ Scroll indicator arrow (added here) ▼▼ -->
+  <div class="scroll-arrow" aria-hidden="true"></div>
 </section>
 
 <!-- ===== SCROLLING STAGES WITH ALTERNATING IMAGES ===== -->
@@ -50,13 +53,15 @@
 
     <!-- 01 · Assess (image right) -->
     <div class="service-stage stage-right" data-stage="assess">
-      <!-- image is now a sibling, not inside the card -->
       <img src="./assets/assess.jpg" class="service-img" alt="Cybersecurity assessment">
+
       <a class="stage-link" href="./assess.html">
         <article class="card">
           <div class="kicker">01 · Assess</div>
           <h3>Cybersecurity Posture Assessment &amp; Roadmap</h3>
+
           <p>A sharp, structured overview of where you stand today - and the most impactful next steps.</p>
+
           <ul class="list">
             <li>Governance, identity, data & network review</li>
             <li>Clear, prioritised risk register</li>
@@ -64,6 +69,7 @@
             <li>Training & awareness recommendations</li>
             <li>Roadmap aligned to growth & compliance</li>
           </ul>
+
           <p class="mono">Fixed fee · ~2 weeks</p>
           <span class="learn-link">Learn more →</span>
         </article>
@@ -73,17 +79,21 @@
     <!-- 02 · Build (image left) -->
     <div class="service-stage stage-left" data-stage="build">
       <img src="./assets/build.jpg" class="service-img" alt="Security implementation">
+
       <a class="stage-link" href="./build.html">
         <article class="card">
           <div class="kicker">02 · Build</div>
           <h3>Foundations Implementation</h3>
+
           <p>Turn the roadmap into real controls - without expensive over-engineering or tool sprawl.</p>
+
           <ul class="list">
             <li>MFA, SSO & access hygiene</li>
             <li>Endpoint & cloud security essentials</li>
             <li>Backups, monitoring & IR basics</li>
             <li>Documentation that’s actually usable</li>
           </ul>
+
           <p class="mono">Milestone based · 3–8 weeks</p>
           <span class="learn-link">Learn more →</span>
         </article>
@@ -93,17 +103,21 @@
     <!-- 03 · Evolve (image right) -->
     <div class="service-stage stage-right" data-stage="evolve">
       <img src="./assets/evolve.jpg" class="service-img" alt="Cyber advisory">
+
       <a class="stage-link" href="./evolve.html">
         <article class="card">
           <div class="kicker">03 · Evolve</div>
           <h3>Ongoing Advisory &amp; Improvement</h3>
+
           <p>A calm monthly partner for your security decisions - keeping things modern without overwhelm.</p>
+
           <ul class="list">
             <li>Quarterly posture reviews</li>
             <li>Vendor selection & tool guidance</li>
             <li>Awareness, workshops & IR drills</li>
             <li>Lightweight ongoing support</li>
           </ul>
+
           <p class="mono">Retainer or ad-hoc</p>
           <span class="learn-link">Learn more →</span>
         </article>
@@ -150,6 +164,29 @@
     stages[0].classList.add('is-active');
   })();
 </script>
+
+<script>
+  // Hide scroll arrow when user scrolls
+  (function () {
+    const arrow = document.querySelector('.scroll-arrow');
+    if (!arrow) return;
+
+    let hideTimeout = null;
+
+    function hideArrow() {
+      if (!arrow.classList.contains('is-hidden')) {
+        arrow.classList.add('is-hidden');
+      }
+      window.removeEventListener('scroll', hideArrow);
+    }
+
+    window.addEventListener('scroll', () => {
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(hideArrow, 120);
+    });
+  })();
+</script>
+
 
 </body>
 </html>
