@@ -1020,63 +1020,37 @@ button[type="submit"] {
 }
 
 /* =========================================================
-   HOME PAGE HERO BACKDROP IMAGE
+   HOMEPAGE HERO IMAGE — stronger fade, more vertical space
 ========================================================= */
 
-/* Only tweak the hero on the home page */
-.home-page .hero--home {
-  position: relative;
-  overflow: hidden;
-  /* slightly taller hero to make the image feel intentional */
-  padding-block: clamp(var(--space-8), 11vw, var(--space-10)) clamp(2rem, 4vw, 3rem);
-}
-
-/* make sure hero text sits on top of the image */
-.home-page .hero--home .container {
-  position: relative;
-  z-index: 2;
-}
-
-/* backdrop image */
-.home-page .home-hero-img {
+.home-hero-img {
   position: absolute;
-  inset: 50% auto auto 50%;       /* start from center */
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  width: 120vw;                   /* a bit wider than viewport to avoid edges */
-  max-width: none;
+  width: 100vw;
   height: auto;
-  object-fit: cover;
-  z-index: 1;
-  opacity: 0.40;                  /* blends into background */
+  max-width: 1600px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.55; /* subtle transparency for blending */
+  
+  /* Show more top/bottom — prevent aggressive crop */
+  object-fit: contain;
 
-  /* soft fade on all edges, like services images */
-  box-shadow:
-    0 0 160px 95px rgba(7,17,32,1) inset,
-    0 0 160px 95px rgba(7,17,32,1) inset;
-
-  /* extra control over fade using masks */
+  /* Soft edge fading, thicker mask, smoother text visibility */
   -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-    linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 25%, black 75%, transparent 100%);
   -webkit-mask-composite: source-in, source-in;
 
   mask-image:
-    linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-    linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+    linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 25%, black 75%, transparent 100%);
   mask-composite: intersect;
 }
 
-/* small screen tweaks */
-@media (max-width: 700px) {
-  .home-page .home-hero-img {
-    width: 150vw;
-    opacity: 0.5;
-    box-shadow:
-      0 0 130px 80px rgba(7,17,32,1) inset,
-      0 0 130px 80px rgba(7,17,32,1) inset;
-  }
-
-  .home-page .hero--home {
-    padding-block: clamp(var(--space-8), 14vw, var(--space-10)) clamp(1.6rem, 4vw, 2.4rem);
-  }
+.hero {
+  position: relative;
+  overflow: hidden; /* ensures fade behaves cleanly */
 }
