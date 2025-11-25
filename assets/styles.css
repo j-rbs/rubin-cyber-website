@@ -564,7 +564,6 @@ button[type="submit"] {
 }
 
 /* === Slight transparency for dark hero sections === */
-/* HERO: let the body background show through */
 .hero {
   padding-block: clamp(var(--space-8), 9vw, var(--space-10)) clamp(1rem, 3.5vw, 1.75rem);
   background: transparent;
@@ -648,7 +647,7 @@ button[type="submit"] {
 }
 
 /* =========================================================
-   SERVICES PAGE — FEATHERED EDGES + SLIGHTLY HIGHER IMAGES
+   SERVICES PAGE — EVEN EDGE FADE + SLIGHTLY HIGHER IMAGE
 ========================================================= */
 
 .services-page .service-stage {
@@ -681,10 +680,10 @@ button[type="submit"] {
   max-width: 620px;
 }
 
-/* IMAGE — slightly higher + soft feathered edges */
+/* IMAGE — even fade on all four sides + slightly higher */
 .services-page .service-stage .service-img {
   position: absolute;
-  top: 34%;                       /* SLIGHTLY higher than before */
+  top: 34%;                    /* slightly higher than center */
   transform: translateY(-50%);
   width: 70vw;
   max-width: 1200px;
@@ -696,24 +695,15 @@ button[type="submit"] {
   opacity: 0;
   transition: opacity .7s ease .25s;
 
-  /* Feathered / blurred edges so it blends into the dark background */
-  -webkit-mask-image: radial-gradient(
-    circle at center,
-    rgba(0,0,0,1) 60%,
-    rgba(0,0,0,0) 100%
-  );
-  mask-image: radial-gradient(
-    circle at center,
-    rgba(0,0,0,1) 60%,
-    rgba(0,0,0,0) 100%
-  );
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 120% 120%;
-  mask-size: 120% 120%;
+  /* Equal “blur/fade” on all sides using inset shadows in site background color */
+  box-shadow:
+    0 0 130px 75px rgba(7,17,32,0.98) inset,
+    0 0 130px 75px rgba(7,17,32,0.98) inset;
+
+  border-radius: 0; /* keep edges square */
 }
 
-/* When stage is active, fade the image in */
+/* When active, fade image in */
 .services-page .service-stage.is-active .service-img {
   opacity: 0.88;
 }
@@ -769,9 +759,10 @@ button[type="submit"] {
     max-width: 95%;
     margin-bottom: 1.8rem;
 
-    /* Keep feathered edges on mobile, slightly stronger */
-    -webkit-mask-size: 135% 135%;
-    mask-size: 135% 135%;
+    /* Slightly stronger fade on small screens for the same effect */
+    box-shadow:
+      0 0 110px 60px rgba(7,17,32,0.98) inset,
+      0 0 110px 60px rgba(7,17,32,0.98) inset;
   }
 
   .services-page .stage-right .card,
