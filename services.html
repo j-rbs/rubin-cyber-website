@@ -207,6 +207,30 @@
     window.addEventListener('scroll', checkScroll);
   })();
 </script>
+<script>
+  (function () {
+    const arrow = document.querySelector('.scroll-arrow');
+    if (!arrow) return;
+
+    function checkScrollPosition() {
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      // hide when reaching the very bottom
+      if (scrollBottom >= pageHeight - 10) {
+        arrow.classList.add('is-hidden');
+      } else {
+        arrow.classList.remove('is-hidden');
+      }
+    }
+
+    window.addEventListener('scroll', checkScrollPosition);
+    window.addEventListener('resize', checkScrollPosition);
+
+    // run once on load
+    checkScrollPosition();
+  })();
+</script>
 
 
 </body>
