@@ -1071,30 +1071,36 @@ button[type="submit"] {
 }
 
 /* backdrop image at the bottom */
+/* smoother, later, softer fade */
 .assess-backdrop {
   position: absolute;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  width: 120%;                 /* a bit wider so edges aren’t visible */
+  width: 120%;
   max-width: none;
-  height: 420px;               /* adjust if you want more / less image */
+  height: 420px;
   object-fit: cover;
-  opacity: 0.5;                /* “slightly behind” the text */
+  opacity: 0.40;
   pointer-events: none;
   z-index: 0;
 
-  /* fade the TOP of the image so it blends into the bg */
+  /* MUCH softer fade — starts lower, ends gentler */
   -webkit-mask-image: linear-gradient(
     to bottom,
-    transparent 0%,
-    black 30%,
-    black 100%
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 22%,
+    rgba(0, 0, 0, 0.85) 38%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 1) 100%
   );
+
   mask-image: linear-gradient(
     to bottom,
-    transparent 0%,
-    black 30%,
-    black 100%
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 22%,
+    rgba(0, 0, 0, 0.85) 38%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 1) 100%
   );
 }
