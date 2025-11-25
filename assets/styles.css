@@ -916,9 +916,3 @@ button[type="submit"] {
   right: -6vw !important;   /* was -14vw / -18vw */
   width: 86vw !important;   /* was 70–76vw → ensures full bleed */
 }
-
-/* Text-left layouts (image on right) */
-.services-page .stage-left .service-img {
-  left: auto !important;
-  right: -6vw !important;
-}
