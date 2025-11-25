@@ -25,7 +25,6 @@
   --font-heading:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-logo:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-
   /* Rhythm & Type */
   --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem;
   --space-5:1.25rem; --space-6:1.5rem; --space-7:2rem; --space-8:3rem;
@@ -92,10 +91,10 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   width: 32px;
   height: 32px;
   display: block;
-  border-radius: 9px;                 /* smooth corners */
-  padding: 4px;                       /* breathing room around shield */
-  background: rgba(7,17,32,0.95);     /* same as nav background / slightly darker */
-  box-shadow: 0 0 0 1px rgba(93,160,213,0.35); /* optional subtle ring */
+  border-radius: 9px;
+  padding: 4px;
+  background: rgba(7,17,32,0.95);
+  box-shadow: 0 0 0 1px rgba(93,160,213,0.35);
 }
 
 .brand span{
@@ -128,9 +127,9 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .menu .cta{
   background: transparent;
   color: var(--ice);
-  border: 1.5px solid rgba(93,160,213,0.55); /* ice border */
+  border: 1.5px solid rgba(93,160,213,0.55);
   padding: .55rem .95rem;
-  border-radius: 10px; /* matches your site’s geometry */
+  border-radius: 10px;
   font-weight: 600;
   font-size: 0.92rem;
   letter-spacing: 0.02em;
@@ -144,7 +143,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 }
 
 .menu .cta:hover{
-  background: rgba(93,160,213,0.12); /* subtle ice wash */
+  background: rgba(93,160,213,0.12);
   border-color: var(--ice);
   color: var(--ice-hover);
   transform: translateY(-1px);
@@ -162,7 +161,6 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   box-shadow: 0 0 0 3px rgba(93,160,213,0.35);
 }
 
-
 /* HERO */
 .hero{
   padding-block: clamp(var(--space-8), 10vw, var(--space-10)) var(--space-7);
@@ -171,8 +169,8 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 }
 .badge{
   display:inline-block;
-  background: rgba(93,160,213,0.20); /* icy blue wash */
-  color: var(--ice);                 /* icy blue text */
+  background: rgba(93,160,213,0.20);
+  color: var(--ice);
   border: 1.5px solid rgba(93,160,213,0.45);
   padding:.42rem .9rem;
   border-radius: 999px;
@@ -569,7 +567,7 @@ button[type="submit"] {
 /* HERO: let the body background show through */
 .hero {
   padding-block: clamp(var(--space-8), 9vw, var(--space-10)) clamp(1rem, 3.5vw, 1.75rem);
-  background: transparent;        /* was rgba(...) */
+  background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   text-align: center;
@@ -650,226 +648,7 @@ button[type="submit"] {
 }
 
 /* =========================================================
-   SERVICES PAGE — FINAL CLEAN VERSION
-========================================================= */
-
-.services-page .service-stage {
-  position: relative;
-  z-index: 1;
-  min-height: 90vh;
-  margin-block: 7rem;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-
-/* Fade-in on scroll */
-.services-page .service-stage.is-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===============================================
-   TEXT BLOCK (NO BLUR, NO BACKGROUND, CLEAN)
-=============================================== */
-
-.services-page .service-stage .card {
-  position: relative;
-  z-index: 10 !important;
-
-  /* kill ALL glass / blur / background */
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-
-  padding: 0;
-  max-width: 620px;
-
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-
-.services-page .service-stage.is-active .card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===============================================
-   IMAGE BEHIND TEXT — LARGER, HIGHER, FULL FADE
-=============================================== */
-
-.services-page .service-stage .service-img {
-  position: absolute;
-  top: 40%;                       /* moved UP */
-  transform: translateY(-50%);
-  z-index: 1;
-
-  width: 70vw;
-  height: 70vh;
-  object-fit: cover;
-
-  opacity: 0;
-  transition: opacity .9s ease .25s, transform .9s ease .25s;
-
-  /* Full-edge fade (top/bottom/left/right) */
-  -webkit-mask-image: radial-gradient(
-    circle,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.85) 35%,
-    rgba(0,0,0,0.40) 60%,
-    rgba(0,0,0,0) 100%
-  );
-  mask-image: radial-gradient(
-    circle,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.85) 35%,
-    rgba(0,0,0,0.40) 60%,
-    rgba(0,0,0,0) 100%
-  );
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-.services-page .service-stage.is-active .service-img {
-  opacity: .88;
-}
-
-/* ===============================================
-   LEFT / RIGHT ALTERNATION
-=============================================== */
-
-.services-page .stage-right .service-img {
-  right: -12vw;
-}
-
-.services-page .stage-left .service-img {
-  left: -12vw;
-}
-
-/* ===============================================
-   MOBILE VERSION
-=============================================== */
-
-@media (max-width: 820px) {
-  .services-page .service-stage {
-    min-height: auto;
-    margin-block: 4rem;
-  }
-
-  .services-page .service-stage .service-img {
-    position: relative;
-    top: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    height: auto;
-    margin-bottom: 1.8rem;
-  }
-
-  .services-page .stage-right .service-img,
-  .services-page .stage-left .service-img {
-    left: 50%;
-    right: auto;
-  }
-}
-
-/* =========================================================
-   SERVICES PAGE — INSET SOFT-EDGE FADE
-========================================================= */
-
-.services-page .service-stage .service-img {
-  position: absolute;
-  top: 42%;                     /* slightly above text */
-  transform: translateY(-50%);
-  z-index: 1;
-  pointer-events: none;
-
-  width: 70vw;
-  max-width: 1200px;
-  height: auto;
-  object-fit: cover;
-
-  opacity: 0;
-  transition: opacity .6s ease .25s;
-
-  /* --- SOFT EDGE FADE USING INSET SHADOWS --- */
-  box-shadow:
-    0 0 90px 40px rgba(7,17,32,1) inset,   /* top/bottom fade */
-    0 0 90px 40px rgba(7,17,32,1) inset;   /* left/right fade */
-
-  border-radius: 14px; /* optional: remove if you want ZERO corner rounding */
-}
-
-.services-page .service-stage.is-active .service-img {
-  opacity: .85;
-}
-
-/* RIGHT / LEFT placement */
-.services-page .stage-right .service-img {
-  right: -12vw;
-}
-
-.services-page .stage-left .service-img {
-  left: -12vw;
-}
-
-/* TEXT BLOCK — no blur */
-.services-page .service-stage .card {
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  z-index: 10;
-  max-width: 600px;
-  padding: 0;
-}
-
-/* Alternating text positions */
-.services-page .stage-right .card { margin-right: auto; }
-.services-page .stage-left .card  { margin-left: auto; }
-
-/* Remove underlines */
-.services-page .service-stage a { 
-  text-decoration: none !important;
-  color: inherit;
-}
-
-/* Keep Learn More subtle */
-.services-page .learn-link {
-  color: var(--blue);
-  font-weight: 500;
-}
-.services-page .learn-link:hover {
-  color: var(--blue-hover);
-  text-decoration: underline;
-}
-
-/* Mobile stacking */
-@media (max-width: 820px) {
-  .services-page .service-stage .service-img {
-    position: relative;
-    top: auto; left: 50% !important; right: auto !important;
-    transform: translateX(-50%);
-    width: 95%; max-width: 95%;
-    margin-bottom: 1.5rem;
-    box-shadow:
-      0 0 60px 25px rgba(7,17,32,1) inset,
-      0 0 60px 25px rgba(7,17,32,1) inset;
-  }
-
-  .services-page .stage-right .card,
-  .services-page .stage-left .card {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-/* =========================================================
-   SERVICES PAGE — CLEAN, STRONG INSET FADE, NO TEXT BLUR
+   SERVICES PAGE — FEATHERED EDGES + SLIGHTLY HIGHER IMAGES
 ========================================================= */
 
 .services-page .service-stage {
@@ -882,15 +661,13 @@ button[type="submit"] {
   transition: opacity .7s ease, transform .7s ease;
 }
 
+/* Fade-in on scroll */
 .services-page .service-stage.is-active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ===============================
-   TEXT BLOCK (clean, no blur)
-=============================== */
-
+/* TEXT BLOCK (clean, no blur/background) */
 .services-page .service-stage .card {
   position: relative;
   z-index: 10;
@@ -904,14 +681,10 @@ button[type="submit"] {
   max-width: 620px;
 }
 
-/* ===============================
-   IMAGE — strong inset fade
-   Bigger, shifted upward, overlapping text
-=============================== */
-
+/* IMAGE — slightly higher + soft feathered edges */
 .services-page .service-stage .service-img {
   position: absolute;
-  top: 38%;                    /* moved higher than text */
+  top: 34%;                       /* SLIGHTLY higher than before */
   transform: translateY(-50%);
   width: 70vw;
   max-width: 1200px;
@@ -923,22 +696,29 @@ button[type="submit"] {
   opacity: 0;
   transition: opacity .7s ease .25s;
 
-  /* STRONG INSET FADE ON ALL SIDES */
-  box-shadow:
-    0 0 140px 80px rgba(7,17,32,1) inset,
-    0 0 140px 80px rgba(7,17,32,1) inset;
-
-  border-radius: 0; /* fully remove corners */
+  /* Feathered / blurred edges so it blends into the dark background */
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 120% 120%;
+  mask-size: 120% 120%;
 }
 
+/* When stage is active, fade the image in */
 .services-page .service-stage.is-active .service-img {
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
-/* ===============================
-   LEFT / RIGHT ALTERNATION
-=============================== */
-
+/* LEFT / RIGHT ALTERNATION */
 .services-page .stage-right .service-img {
   right: -14vw;
 }
@@ -955,16 +735,13 @@ button[type="submit"] {
   margin-left: auto;
 }
 
-/* ===============================
-   NO UNDERLINES ANYWHERE HERE
-=============================== */
-
+/* NO UNDERLINES IN SERVICES CONTENT */
 .services-page a {
   text-decoration: none !important;
   color: inherit;
 }
 
-/* Learn More link */
+/* Learn More link styling */
 .services-page .learn-link {
   color: var(--blue);
   font-weight: 500;
@@ -975,10 +752,7 @@ button[type="submit"] {
   text-decoration: underline;
 }
 
-/* ===============================
-   MOBILE
-=============================== */
-
+/* MOBILE */
 @media (max-width: 820px) {
   .services-page .service-stage {
     min-height: auto;
@@ -995,9 +769,9 @@ button[type="submit"] {
     max-width: 95%;
     margin-bottom: 1.8rem;
 
-    box-shadow:
-      0 0 90px 45px rgba(7,17,32,1) inset,
-      0 0 90px 45px rgba(7,17,32,1) inset;
+    /* Keep feathered edges on mobile, slightly stronger */
+    -webkit-mask-size: 135% 135%;
+    mask-size: 135% 135%;
   }
 
   .services-page .stage-right .card,
