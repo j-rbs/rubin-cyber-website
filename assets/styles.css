@@ -666,10 +666,11 @@ button[type="submit"] {
   transform: translateY(0);
 }
 
-/* TEXT BLOCK (clean, no blur/background) */
+/* TEXT BLOCK (clean, no blur, no background) */
 .services-page .service-stage .card {
   position: relative;
   z-index: 10;
+
   background: none !important;
   border: none !important;
   box-shadow: none !important;
@@ -680,10 +681,14 @@ button[type="submit"] {
   max-width: 620px;
 }
 
-/* IMAGE — even fade on all four sides + slightly higher */
+/* ===============================================
+   IMAGE — EVEN FADE ON ALL FOUR SIDES
+   + JUST SLIGHTLY HIGHER
+=============================================== */
+
 .services-page .service-stage .service-img {
   position: absolute;
-  top: 34%;                    /* slightly higher than center */
+  top: 34%;                       /* slightly higher than center */
   transform: translateY(-50%);
   width: 70vw;
   max-width: 1200px;
@@ -695,20 +700,35 @@ button[type="submit"] {
   opacity: 0;
   transition: opacity .7s ease .25s;
 
-  /* Equal “blur/fade” on all sides using inset shadows in site background color */
+  /* Fallback: dark inset fade into page background */
   box-shadow:
-    0 0 130px 75px rgba(7,17,32,0.98) inset,
-    0 0 130px 75px rgba(7,17,32,0.98) inset;
+    0 0 130px 80px rgba(7,17,32,0.98) inset,
+    0 0 130px 80px rgba(7,17,32,0.98) inset;
 
-  border-radius: 0; /* keep edges square */
+  border-radius: 0; /* keep the photos square */
+
+  /* Rectangular mask so all sides fade equally,
+     instead of a round/vignette look */
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+  -webkit-mask-composite: source-in, source-in;
+
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+  mask-composite: intersect;
 }
 
 /* When active, fade image in */
 .services-page .service-stage.is-active .service-img {
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
-/* LEFT / RIGHT ALTERNATION */
+/* ===============================================
+   LEFT / RIGHT ALTERNATION
+=============================================== */
+
 .services-page .stage-right .service-img {
   right: -14vw;
 }
@@ -725,13 +745,15 @@ button[type="submit"] {
   margin-left: auto;
 }
 
-/* NO UNDERLINES IN SERVICES CONTENT */
+/* ===============================================
+   LINKS
+=============================================== */
+
 .services-page a {
   text-decoration: none !important;
   color: inherit;
 }
 
-/* Learn More link styling */
 .services-page .learn-link {
   color: var(--blue);
   font-weight: 500;
@@ -742,7 +764,10 @@ button[type="submit"] {
   text-decoration: underline;
 }
 
-/* MOBILE */
+/* ===============================================
+   MOBILE
+=============================================== */
+
 @media (max-width: 820px) {
   .services-page .service-stage {
     min-height: auto;
@@ -759,10 +784,20 @@ button[type="submit"] {
     max-width: 95%;
     margin-bottom: 1.8rem;
 
-    /* Slightly stronger fade on small screens for the same effect */
+    /* Slightly stronger fade on all sides for small screens */
     box-shadow:
-      0 0 110px 60px rgba(7,17,32,0.98) inset,
-      0 0 110px 60px rgba(7,17,32,0.98) inset;
+      0 0 110px 70px rgba(7,17,32,0.98) inset,
+      0 0 110px 70px rgba(7,17,32,0.98) inset;
+
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%),
+      linear-gradient(to right,  transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-composite: source-in, source-in;
+
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%),
+      linear-gradient(to right,  transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-composite: intersect;
   }
 
   .services-page .stage-right .card,
