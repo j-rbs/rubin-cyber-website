@@ -186,6 +186,27 @@
     });
   })();
 </script>
+<script>
+  // Hide scroll arrow only when user reaches the bottom of the page
+  (function () {
+    const arrow = document.querySelector('.scroll-arrow');
+    if (!arrow) return;
+
+    function checkScroll() {
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      if (scrollBottom >= pageHeight - 10) {
+        // User has reached the bottom
+        arrow.classList.add('is-hidden');
+      } else {
+        arrow.classList.remove('is-hidden');
+      }
+    }
+
+    window.addEventListener('scroll', checkScroll);
+  })();
+</script>
 
 
 </body>

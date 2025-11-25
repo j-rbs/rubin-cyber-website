@@ -918,65 +918,55 @@ button[type="submit"] {
 }
 
 /* =========================================================
-   GLOBAL SCROLL INDICATOR — fixed at bottom, fades out
+   CLEAN MINIMAL SCROLL INDICATOR
 ========================================================= */
 
+.hero {
+  position: relative;
+}
+
 .scroll-arrow {
-  position: fixed;                     /* stick to viewport, not hero */
+  position: absolute;
+  bottom: 2rem;
   left: 50%;
-  bottom: 1.75rem;                     /* distance from bottom of screen */
-  transform: translate(-50%, 0);       /* center horizontally */
-  width: 26px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid rgba(229, 235, 245, 0.45);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  opacity: 0.8;
-  pointer-events: none;                /* don’t block clicks */
-  z-index: 40;                         /* above hero & images */
-  animation: scrollArrowPulse 2.4s ease-in-out infinite;
-  transition: opacity .6s ease;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  opacity: 0.9;
+  pointer-events: none;
+  animation: arrowPulse 2s ease-in-out infinite;
 }
 
-/* The chevron inside the capsule */
-.scroll-arrow::after {
+/* CHEVRON ARROW */
+.scroll-arrow::before {
   content: "";
-  width: 9px;
-  height: 9px;
-  border-right: 2px solid rgba(229, 235, 245, 0.9);
-  border-bottom: 2px solid rgba(229, 235, 245, 0.9);
-  transform: rotate(45deg) translateY(-4px);
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid rgba(255,255,255,0.85);
+  border-bottom: 2px solid rgba(255,255,255,0.85);
+  transform: rotate(45deg);
+  margin: auto;
 }
 
-/* Soft pulsing / float animation */
-@keyframes scrollArrowPulse {
+/* Centered soft pulse */
+@keyframes arrowPulse {
   0% {
-    transform: translate(-50%, 0);
+    transform: translateX(-50%) translateY(0);
     opacity: 0.4;
   }
-  40% {
-    transform: translate(-50%, 6px);
+  50% {
+    transform: translateX(-50%) translateY(6px);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, 0);
+    transform: translateX(-50%) translateY(0);
     opacity: 0.4;
   }
 }
 
-/* Hidden state once user scrolls */
+/* Fade out only at the very bottom of the page */
 .scroll-arrow.is-hidden {
-  opacity: 0 !important;
-  pointer-events: none;
-}
-
-/* Slightly smaller / tighter on small screens */
-@media (max-width: 700px) {
-  .scroll-arrow {
-    bottom: 1.1rem;
-    width: 22px;
-    height: 34px;
-  }
+  opacity: 0;
+  transition: opacity .7s ease;
 }
