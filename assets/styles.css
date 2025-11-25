@@ -970,3 +970,51 @@ button[type="submit"] {
   opacity: 0;
   transition: opacity .7s ease;
 }
+/* =========================================================
+   CLEAN MINIMAL SCROLL INDICATOR — FIXED TO VIEWPORT BOTTOM
+========================================================= */
+
+.scroll-arrow {
+  position: fixed;                      /* <<< FIX: pin to viewport */
+  bottom: 2rem;                         /* distance from bottom of screen */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 999;                         /* make sure it stays on top */
+  animation: arrowPulse 2s ease-in-out infinite;
+}
+
+/* Chevron */
+.scroll-arrow::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid rgba(255,255,255,0.85);
+  border-bottom: 2px solid rgba(255,255,255,0.85);
+  transform: rotate(45deg);
+  margin: auto;
+}
+
+@keyframes arrowPulse {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.4;
+  }
+}
+
+.scroll-arrow.is-hidden {
+  opacity: 0;
+  transition: opacity .7s ease;
+}
