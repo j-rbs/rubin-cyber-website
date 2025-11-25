@@ -1054,3 +1054,47 @@ button[type="submit"] {
   position: relative;
   overflow: hidden; /* ensures fade behaves cleanly */
 }
+
+/* =========================================================
+   ASSESS PAGE – bottom backdrop image behind text
+========================================================= */
+
+.assess-section {
+  position: relative;
+  overflow: hidden;            /* hide hard edges of the image */
+}
+
+/* keep all the copy above the image */
+.assess-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* backdrop image at the bottom */
+.assess-backdrop {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 120%;                 /* a bit wider so edges aren’t visible */
+  max-width: none;
+  height: 420px;               /* adjust if you want more / less image */
+  object-fit: cover;
+  opacity: 0.5;                /* “slightly behind” the text */
+  pointer-events: none;
+  z-index: 0;
+
+  /* fade the TOP of the image so it blends into the bg */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 30%,
+    black 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 30%,
+    black 100%
+  );
+}
