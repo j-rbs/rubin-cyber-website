@@ -892,7 +892,7 @@ button[type="submit"] {
 
 /* Make the first image extend further right */
 .services-page .service-stage:nth-of-type(1) .service-img {
-  right: -8vw !important;   /* was -14vw */
+  right: -6vw !important;   /* was -14vw */
   width: 76vw !important;     /* slightly wider to avoid gaps */
 }
 
