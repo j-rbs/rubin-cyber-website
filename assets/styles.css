@@ -64,7 +64,7 @@ body{
 
 img{display:block;max-width:100%;height:auto}
 
-/* ONLY CHANGE: made this wider on big screens */
+/* Main layout container */
 .container{width:min(1280px, 90%);margin-inline:auto}
 
 /* Typography & global rhythm */
@@ -125,7 +125,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   border-bottom-color:var(--blue);
 }
 
-/* NAV CTA - Executive Minimal */
+/* NAV CTA */
 .menu .cta{
   background: transparent;
   color: var(--ice);
@@ -143,7 +143,6 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
     box-shadow .18s ease;
   box-shadow: none;
 }
-
 .menu .cta:hover{
   background: rgba(93,160,213,0.12);
   border-color: var(--ice);
@@ -151,19 +150,17 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
-
 .menu .cta:active{
   background: rgba(93,160,213,0.18);
   transform: none;
   box-shadow: none;
 }
-
 .menu .cta:focus-visible{
   outline: none;
   box-shadow: 0 0 0 3px rgba(93,160,213,0.35);
 }
 
-/* HERO (single consolidated definition) */
+/* HERO */
 .hero{
   position: relative;
   padding-block: clamp(var(--space-8), 9vw, var(--space-10)) clamp(1rem, 3.5vw, 1.75rem);
@@ -171,7 +168,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   text-align:center;
-  overflow:hidden; /* helps hero fades / images */
+  overflow:hidden;
 }
 .badge{
   display:inline-block;
@@ -197,9 +194,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   -webkit-backdrop-filter: none;
 }
 .hero--fade{position:relative;background:transparent!important}
-.hero--fade::after{
-  content:none;
-}
+.hero--fade::after{content:none}
 
 /* SECTIONS / GRID */
 .section{padding-block: clamp(2rem, 6vw, 4rem)}
@@ -330,7 +325,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .section.about{ font-size:1.05rem }
 .section.about .container{ max-width:900px }
 
-/* Floated image - keep as-is */
+/* Floated image */
 .section.about .about-photo{
   float:right;width:300px;margin:0 0 var(--space-6) var(--space-7);
   border-radius:1rem;object-fit:cover;
@@ -345,7 +340,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   max-width: var(--measure);
 }
 
-/* -------- BULLETS -------- */
+/* Bullets */
 .section.about ul.indented-list{
   list-style: disc outside;
   padding-left: 1.2rem;
@@ -365,7 +360,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 }
 .section.about ul.indented-list.clear-right{ clear: right; }
 
-/* Mobile: normal indentation so it doesn't look cramped */
+/* Mobile: about */
 @media (max-width:800px){
   .section{padding-block: var(--space-7)}
   .grid{gap: var(--space-5)}
@@ -376,7 +371,7 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
   .section.about ul.indented-list{ margin-left: 1.2rem; }
 }
 
-/* Headings: slightly more separation from following text */
+/* Headings spacing */
 h2 + p, h3 + p { margin-top: .15rem }
 
 /* ===========================
@@ -396,7 +391,7 @@ h2 + p, h3 + p { margin-top: .15rem }
   }
 }
 
-/* Optional: background on its own layer for desktops that like 'fixed' */
+/* Background layer for desktops */
 .bg-layer{ background:none!important; position:relative; }
 .bg-layer::before{
   content:""; position:fixed; inset:0; z-index:-1;
@@ -416,7 +411,7 @@ h2 + p, h3 + p { margin-top: .15rem }
 }
 
 /* ===========================
-   GLOBAL HERO ⇄ SECTION SPACING FIX
+   GLOBAL HERO ⇄ SECTION SPACING
    =========================== */
 
 .hero + .section{
@@ -440,7 +435,7 @@ h2 + p, h3 + p { margin-top: .15rem }
   margin-top: 0;
 }
 
-/* === FIX: Prevent CTA button cut-off on mobile nav === */
+/* === Mobile nav tweaks === */
 @media (max-width: 700px) {
   .nav {
     padding-block: 0.9rem 0.9rem;
@@ -455,7 +450,7 @@ h2 + p, h3 + p { margin-top: .15rem }
   }
 }
 
-/* === FIX: Button text size for forms (Send message) === */
+/* Button text size */
 .btn,
 button[type="submit"] {
   font-size: 1rem;
@@ -470,7 +465,7 @@ button[type="submit"] {
   }
 }
 
-/* === Mobile nav: keep CTA fully visible === */
+/* Mobile nav: keep CTA visible */
 @media (max-width: 640px){
   .nav .menu{
     overflow: visible !important;
@@ -495,7 +490,7 @@ button[type="submit"] {
   }
 }
 
-/* === MOBILE NAV: keep CTA on same row, aligned right === */
+/* Mobile nav: CTA on same row */
 @media (max-width: 640px){
   .nav-inner{
     display:flex;
@@ -534,7 +529,7 @@ button[type="submit"] {
   }
 }
 
-/* Make entire service cards clickable links */
+/* Card-link wrapper */
 .card-link {
   display: block;
   text-decoration: none;
@@ -549,7 +544,7 @@ button[type="submit"] {
   box-shadow: var(--shadow-2);
 }
 
-/* === Match section buttons to the nav CTA (default) === */
+/* Section buttons match nav CTA */
 .section .btn,
 .section button,
 .section a.btn {
@@ -604,6 +599,21 @@ button[type="submit"] {
   transform: translateY(40px);
   transition: opacity .7s ease, transform .7s ease;
 }
+
+/* Soft vignette behind image to blend into background */
+.services-page .service-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(7,17,32,0.0) 0%,
+      rgba(7,17,32,0.65) 65%,
+      rgba(7,17,32,0.95) 100%);
+  pointer-events: none;
+}
+
 .services-page .service-stage.is-active {
   opacity: 1;
   transform: translateY(0);
@@ -612,7 +622,7 @@ button[type="submit"] {
 /* TEXT BLOCK */
 .services-page .service-stage .card {
   position: relative;
-  z-index: 10;
+  z-index: 2;
   background: none !important;
   border: none !important;
   box-shadow: none !important;
@@ -642,67 +652,38 @@ button[type="submit"] {
   text-shadow: 0 0 14px rgba(0,0,0,0.85);
 }
 
-/* IMAGE */
+/* IMAGE — centered, blended edges */
 .services-page .service-stage .service-img {
   position: absolute;
-  top: 34%;
-  transform: translateY(-50%);
-  width: 86vw;
-  max-width: 1200px;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1100px, 90vw);
   height: auto;
   object-fit: cover;
   pointer-events: none;
   z-index: 1;
   opacity: 0;
   transition: opacity .7s ease;
-  box-shadow:
-    0 0 160px 95px rgba(7,17,32,1) inset,
-    0 0 160px 95px rgba(7,17,32,1) inset;
+  filter: brightness(0.9) saturate(0.95);
   -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-    linear-gradient(to right,  transparent 0%, black 20%, black 80%, transparent 100%);
-  -webkit-mask-composite: source-in, source-in;
+    radial-gradient(circle at center,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.15) 40%,
+      rgba(0,0,0,0.85) 80%,
+      rgba(0,0,0,1) 100%);
   mask-image:
-    linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-    linear-gradient(to right,  transparent 0%, black 20%, black 80%, transparent 100%);
-  mask-composite: intersect;
+    radial-gradient(circle at center,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.15) 40%,
+      rgba(0,0,0,0.85) 80%,
+      rgba(0,0,0,1) 100%);
 }
 .services-page .service-stage.is-active .service-img {
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
-/* PER-IMAGE SIDE BIAS */
-.services-page .service-stage:nth-of-type(1) .service-img {
-  right: -6vw !important;
-  width: 76vw !important;
-  -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 42%, black 92%, black 100%);
-  mask-image:
-    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 42%, black 92%, black 100%);
-}
-.services-page .service-stage:nth-of-type(2) .service-img {
-  -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 12%, black 50%, transparent 100%);
-  mask-image:
-    linear-gradient(to bottom, transparent 0%, black 24%, black 76%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 12%, black 50%, transparent 100%);
-}
-.services-page .service-stage:nth-of-type(3) .service-img {
-  -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 38%, black 84%, transparent 100%);
-  mask-image:
-    linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 38%, black 84%, transparent 100%);
-}
-
-/* LEFT / RIGHT POSITIONING */
-.services-page .stage-right .service-img { right: -6vw !important; }
-.services-page .stage-left  .service-img { left:  -14vw; }
-
+/* Align cards left/right while image stays centered */
 .services-page .stage-right .card { margin-right: auto; }
 .services-page .stage-left  .card { margin-left:  auto; }
 
@@ -726,61 +707,57 @@ button[type="submit"] {
     min-height: auto;
     margin-block: 4rem;
   }
+
+  .services-page .service-stage::before {
+    background:
+      radial-gradient(ellipse at center,
+        rgba(7,17,32,0.0) 0%,
+        rgba(7,17,32,0.8) 55%,
+        rgba(7,17,32,0.95) 100%);
+  }
+
   .services-page .service-stage .service-img {
     position: relative;
     top: auto;
-    left: 50% !important;
-    right: auto !important;
+    left: 50%;
     transform: translateX(-50%);
-    width: 95%;
-    max-width: 95%;
+    width: min(640px, 95%);
     margin-bottom: 1.8rem;
-    box-shadow:
-      0 0 130px 85px rgba(7,17,32,1) inset,
-      0 0 130px 85px rgba(7,17,32,1) inset;
-  }
-  .services-page .service-stage:nth-of-type(1) .service-img {
+    opacity: 0.55;
     -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 50%, black 92%, transparent 100%);
+      radial-gradient(circle at center,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.2) 30%,
+        rgba(0,0,0,0.9) 80%,
+        rgba(0,0,0,1) 100%);
     mask-image:
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 50%, black 92%, transparent 100%);
+      radial-gradient(circle at center,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.2) 30%,
+        rgba(0,0,0,0.9) 80%,
+        rgba(0,0,0,1) 100%);
   }
-  .services-page .service-stage:nth-of-type(2) .service-img {
-    -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 10%, black 52%, transparent 100%);
-    mask-image:
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 10%, black 52%, transparent 100%);
-  }
-  .services-page .service-stage:nth-of-type(3) .service-img {
-    -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 40%, black 90%, transparent 100%);
-    mask-image:
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 40%, black 90%, transparent 100%);
-  }
+
   .services-page .stage-right .card,
   .services-page .stage-left .card {
     margin-left: 0;
     margin-right: 0;
   }
+
   .services-page .service-stage .card {
     transition:
       opacity .55s ease .28s,
       transform .55s ease .28s;
   }
 }
+
 /* Make ONLY the second services image more transparent */
 .services-page .service-stage:nth-of-type(2).is-active .service-img {
   opacity: 0.45 !important;
 }
 
 /* =========================================================
-   CLEAN MINIMAL SCROLL INDICATOR — fixed to viewport
+   CLEAN MINIMAL SCROLL INDICATOR
 ========================================================= */
 
 .scroll-arrow {
@@ -825,7 +802,7 @@ button[type="submit"] {
 }
 
 /* =========================================================
-   HOMEPAGE HERO IMAGE — fade + backdrop
+   HOMEPAGE HERO IMAGE
 ========================================================= */
 
 .home-hero-img {
@@ -856,17 +833,15 @@ button[type="submit"] {
 
 .assess-section {
   position: relative;
-  overflow: hidden;            /* hide hard edges of the image */
+  overflow: hidden;
 }
-
-/* dark overlay over the image for legible copy */
 .assess-section::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 520px; /* matches image height */
+  height: 520px;
   background: linear-gradient(
     to top,
     rgba(7,17,32,0.96) 0%,
@@ -875,17 +850,13 @@ button[type="submit"] {
     rgba(7,17,32,0.45) 78%,
     rgba(7,17,32,0.00) 100%
   );
-  z-index: 0;           /* above image, below text */
+  z-index: 0;
   pointer-events: none;
 }
-
-/* keep all the copy above the image + overlay */
 .assess-section .container {
   position: relative;
   z-index: 1;
 }
-
-/* backdrop image at the bottom */
 .assess-backdrop {
   position: absolute;
   left: 50%;
@@ -895,7 +866,7 @@ button[type="submit"] {
   max-width: none;
   height: 520px;
   object-fit: cover;
-  opacity: 0.3;         /* softer so text pops */
+  opacity: 0.3;
   pointer-events: none;
   z-index: -1;
   -webkit-mask-image: linear-gradient(
@@ -915,8 +886,6 @@ button[type="submit"] {
     rgba(0, 0, 0, 1) 100%
   );
 }
-
-/* text & lists over the image */
 .assess-section h2,
 .assess-section h3,
 .assess-section p,
@@ -924,8 +893,6 @@ button[type="submit"] {
   color: #F5F7FF;
   text-shadow: 0 0 14px rgba(0,0,0,0.95);
 }
-
-/* Icy blue, high-visibility CTA button just for this section */
 .assess-section .btn {
   background: var(--ice);
   color: #04111F;
