@@ -40,6 +40,10 @@
   /* Readable measures */
   --measure:72ch;
   --measure-narrow:62ch;
+
+  /* Page width controls */
+  --page-max: 1100px;
+  --page-max-wide: 1380px;
 }
 
 /* RESET & BASE */
@@ -63,7 +67,12 @@ body{
 }
 
 img{display:block;max-width:100%;height:auto}
-.container{width:min(1100px, 90%);margin-inline:auto}
+
+/* main layout container, now scalable */
+.container{
+  width:min(var(--page-max), 90vw);
+  margin-inline:auto;
+}
 
 /* Typography & global rhythm */
 p{margin-block: var(--space-4); line-height: var(--lh-relaxed)}
@@ -197,6 +206,30 @@ ul,ol{padding-left:1.2rem; margin-block: var(--space-3)}
 .hero--fade{position:relative;background:transparent!important}
 .hero--fade::after{
   content:none;
+}
+
+/* Large-screen hero layout */
+@media (min-width: 1024px){
+  .hero{
+    text-align:left;
+  }
+
+  .hero .container{
+    display:grid;
+    grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+    align-items:center;
+    column-gap:clamp(2rem, 5vw, 4rem);
+  }
+
+  .hero-main,
+  .hero-side{
+    max-width:none;
+  }
+
+  .hero p{
+    margin-inline:0;
+    max-width:38rem;
+  }
 }
 
 /* SECTIONS / GRID */
@@ -833,7 +866,7 @@ button[type="submit"] {
   transform: translate(-50%, -50%);
   width: 100vw;
   height: auto;
-  max-width: 1600px;
+  max-width: 2000px;
   pointer-events: none;
   z-index: -1;
   opacity: 0.30;
@@ -941,4 +974,34 @@ button[type="submit"] {
 .assess-section .btn:active {
   transform: translateY(0);
   box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
+
+/* =========================================================
+   PAGE-WIDE LARGE-SCREEN TWEAKS
+========================================================= */
+
+/* Let the whole page breathe more on large desktops */
+@media (min-width: 1280px){
+  :root{
+    --page-max: var(--page-max-wide);
+  }
+}
+
+/* Typographic + spacing polish on very large screens */
+@media (min-width: 1400px){
+  body{
+    font-size:17px;
+  }
+
+  h1{
+    font-size:clamp(2.4rem, 3.6vw, 3.4rem);
+  }
+
+  h2{
+    font-size:clamp(1.6rem, 2.4vw, 2.1rem);
+  }
+
+  .section{
+    padding-block:clamp(3rem, 6vw, 4.5rem);
+  }
 }
