@@ -63,7 +63,9 @@ body{
 }
 
 img{display:block;max-width:100%;height:auto}
-.container{width:min(1100px, 90%);margin-inline:auto}
+
+/* ONLY CHANGE: made this wider on big screens */
+.container{width:min(1280px, 90%);margin-inline:auto}
 
 /* Typography & global rhythm */
 p{margin-block: var(--space-4); line-height: var(--lh-relaxed)}
